@@ -346,8 +346,7 @@ body.intro-ended .sound:hover,body.intro-ended .sound:focus-visible{opacity:1}
 }
 .intro__wordmark .ltr{display:inline-block;transform:translateY(118%);will-change:transform}
 .intro__wordmark .iw--lab > span{color:var(--volt);font-size:clamp(13px,1.5vw,20px);letter-spacing:.24em;padding-bottom:.2em}
-.intro__bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-.intro__bottom{min-height:1px}
+.intro__bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;min-height:1px}
 .intro__bar{position:absolute;left:0;bottom:0;height:1px;background:var(--line-soft);width:100%}
 .intro__bar i{position:absolute;inset:0;background:var(--volt);transform-origin:left;transform:scaleX(0);opacity:.7}
 body:not(.intro-active) .intro{opacity:0;visibility:hidden}
@@ -971,6 +970,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .btn{--btn-h:46px;font-size:10.5px}
   .hero{padding-left:var(--pad);padding-right:var(--pad)}
   .hero__title{font-size:clamp(32px,10.4vw,64px)}
+  /* phone override of the 980px tablet value above */
   .hero__copy{padding-top:clamp(140px,33svh,300px)}
   .hero__eyebrow{font-size:10px;letter-spacing:.16em;margin-bottom:16px}
   .hero__actions{gap:8px}
@@ -979,7 +979,6 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .scroll-cue{display:none}
   .intro__tag .label{font-size:9px;letter-spacing:.14em}
   .intro__index{display:none}
-  .intro__meta{display:none}
   .bpm__val,.load__val{font-size:clamp(32px,9vw,44px)}
   .intro__pr{top:20%;font-size:16px;letter-spacing:.2em}
   .intro__readout{gap:14px}
