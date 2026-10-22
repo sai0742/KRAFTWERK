@@ -35,22 +35,23 @@
   --line:rgba(244,244,239,.13);
   --line-soft:rgba(244,244,239,.07);
   --panel-2:#14171524;
-  --pad:clamp(18px,4.2vw,72px);
-  --maxw:1680px;
-  --radius:2px;
+  --pad:clamp(18px,5vw,96px);
+  --maxw:1720px;
+  --radius:4px;
 
   --font-display:"Orbitron","Arial Black",system-ui,sans-serif;
   --font-body:"Exo 2",system-ui,-apple-system,sans-serif;
   --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 
   --fs-h1:clamp(34px,min(7vw,11.4vh),116px);
-  --fs-h2:clamp(28px,4.4vw,64px);
-  --fs-h3:clamp(19px,1.9vw,27px);
-  --fs-body:clamp(14.5px,1.02vw,16.5px);
+  --fs-h2:clamp(26px,4.2vw,64px);
+  --fs-h3:clamp(18px,1.85vw,27px);
+  --fs-body:clamp(15px,1.06vw,17.5px);
   --fs-label:11px;
 
   --ease:cubic-bezier(.22,.61,.24,1);
-  --gut:clamp(34px,5.4vh,78px);
+  --gut:clamp(54px,8.5vh,128px);
+  --navh:clamp(68px,9vh,94px);
 
   --z-grain:240;
   --z-intro:100;
@@ -76,8 +77,8 @@ body{
   font-family:var(--font-body);
   font-size:var(--fs-body);
   font-weight:400;
-  line-height:1.62;
-  letter-spacing:.006em;
+  line-height:1.74;
+  letter-spacing:.008em;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
@@ -85,6 +86,7 @@ body{
 }
 body.is-locked{overflow:hidden;touch-action:none}
 h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}
+h2,h3{overflow-wrap:break-word;word-break:break-word}
 ul,ol{margin:0;padding:0;list-style:none}
 img,svg,canvas{display:block;max-width:100%}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
@@ -126,44 +128,44 @@ input,select,textarea{font:inherit;color:inherit}
 .display{font-family:var(--font-display);font-weight:900;letter-spacing:-.015em;line-height:.94}
 .h2{
   font-family:var(--font-display);font-weight:900;
-  font-size:var(--fs-h2);line-height:.98;letter-spacing:-.02em;
+  font-size:var(--fs-h2);line-height:1.04;letter-spacing:-.02em;
   text-wrap:balance;
 }
 .h3{
   font-family:var(--font-display);font-weight:800;
-  font-size:var(--fs-h3);line-height:1.08;letter-spacing:-.01em;
+  font-size:var(--fs-h3);line-height:1.15;letter-spacing:-.01em;
 }
-.lede{color:var(--muted);font-size:clamp(15px,1.15vw,18px);line-height:1.66;max-width:46ch;font-weight:300}
+.lede{color:var(--muted);font-size:clamp(16px,1.2vw,19.5px);line-height:1.8;max-width:52ch;font-weight:300}
 .label,.eyebrow{
   font-family:var(--font-mono);font-size:var(--fs-label);font-weight:500;
-  letter-spacing:.2em;text-transform:uppercase;line-height:1.3;
+  letter-spacing:.2em;text-transform:uppercase;line-height:1.4;
 }
 .muted{color:var(--muted)}
 .volt{color:var(--volt)}
 .mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-.tiny{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.6}
-.note{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;color:#7E857E;line-height:1.7;max-width:74ch}
+.tiny{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+.note{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:#7E857E;line-height:1.8;max-width:74ch}
 
 /* 04 · UTILITIES ---------------------------------------------------------- */
 .shell{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.section{position:relative;z-index:2;padding:clamp(70px,11vh,150px) 0}
-.section--tight{padding-top:clamp(46px,7vh,96px)}
+.section{position:relative;z-index:2;padding:clamp(130px,20vh,260px) 0}
+.section--tight{padding-top:clamp(80px,12vh,150px)}
 .rule{height:1px;background:var(--line);border:0;margin:0}
 .sec-head{
-  display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);
-  gap:clamp(16px,3vw,56px);align-items:start;
-  margin-bottom:clamp(34px,6vh,74px);
+  display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr);
+  gap:clamp(32px,5vw,96px);align-items:start;
+  margin-bottom:clamp(64px,11vh,136px);
 }
 .sec-head__num{
-  font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:.2em;color:var(--muted);
-  display:flex;align-items:center;gap:12px;padding-top:.55em;
+  font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:.22em;color:var(--muted);
+  display:flex;align-items:center;gap:14px;padding-top:.6em;
 }
-.sec-head__num::before{content:"";width:26px;height:1px;background:var(--volt);display:block;flex:none}
-.sec-head__body{display:flex;flex-direction:column;gap:18px;max-width:min(100%,680px)}
-.sec-head__body .h2{max-width:15ch}
-.sec-head__body .note{max-width:52ch}
-.sec-head--wide .sec-head__body{max-width:min(100%,720px)}
-.sec-head--wide .sec-head__body .h2{max-width:16ch}
+.sec-head__num::before{content:"";width:32px;height:1px;background:var(--volt);display:block;flex:none}
+.sec-head__body{display:flex;flex-direction:column;gap:26px;max-width:min(100%,760px)}
+.sec-head__body .h2{max-width:16ch}
+.sec-head__body .note{max-width:56ch}
+.sec-head--wide .sec-head__body{max-width:min(100%,820px)}
+.sec-head--wide .sec-head__body .h2{max-width:17ch}
 .sr-only{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0;
@@ -205,43 +207,83 @@ input,select,textarea{font:inherit;color:inherit}
 /* 05 · CHROME ------------------------------------------------------------- */
 .nav{
   position:fixed;inset:0 0 auto 0;z-index:var(--z-nav);
-  padding:0 calc(var(--pad) + 104px) 0 var(--pad);height:clamp(64px,8.4vh,86px);
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:0 calc(var(--pad) + 116px) 0 var(--pad);height:var(--navh);
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
   transition:background .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent;
 }
-.nav.is-scrolled{background:rgba(17,19,18,.92);border-bottom-color:var(--line-soft);backdrop-filter:blur(6px)}
+.nav.is-scrolled{background:rgba(17,19,18,.94);border-bottom-color:var(--line-soft);backdrop-filter:blur(8px)}
 .nav__brand{display:inline-flex;align-items:center;gap:14px;padding:6px 0}
 .nav__mark{width:28px;height:auto;color:var(--volt);flex:none}
 .nav__word{
   font-family:var(--font-display);font-weight:800;font-size:clamp(13px,1.15vw,16px);
   letter-spacing:.12em;color:var(--text);line-height:1;
 }
-.nav__links{display:flex;align-items:center;gap:clamp(18px,2.2vw,38px)}
+.nav__links{display:flex;align-items:center;gap:clamp(22px,2.5vw,42px)}
 .nav__link{
   font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-  transition:color .22s var(--ease);position:relative;padding:6px 0;
+  transition:color .22s var(--ease);position:relative;padding:8px 0;
 }
 .nav__link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--volt);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
 .nav__link:hover,.nav__link:focus-visible{color:var(--text)}
 .nav__link:hover::after{transform:scaleX(1)}
-.nav__right{display:flex;align-items:center;gap:12px}
+.nav__right{display:flex;align-items:center;gap:14px}
 .nav__menu{display:none}
 .menu{
   position:fixed;inset:0;z-index:calc(var(--z-nav) - 1);
   background:rgba(17,19,18,.985);padding:clamp(88px,12vh,120px) var(--pad) 40px;
   display:flex;flex-direction:column;justify-content:space-between;
   opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;
+  overflow-y:auto;
 }
 .menu.is-open{opacity:1;visibility:visible}
-.menu__links{display:flex;flex-direction:column;gap:4px}
+.menu__links{display:flex;flex-direction:column;gap:8px}
 .menu__link{
-  font-family:var(--font-display);font-weight:900;font-size:clamp(28px,8vw,44px);
+  font-family:var(--font-display);font-weight:900;font-size:clamp(24px,6.5vw,40px);
   letter-spacing:-.02em;line-height:1.25;color:var(--text);
-  display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--line-soft);
+  display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line-soft);
 }
 .menu__link > span:first-child{font-family:var(--font-mono);font-size:11px;color:var(--volt);letter-spacing:.1em;font-weight:400}
-.menu__foot{display:flex;flex-direction:column;gap:16px;padding-top:30px}
+.menu__foot{display:flex;flex-direction:column;gap:18px;padding-top:32px}
+
+/* 05b · MULTI-PAGE SWITCHER BAR ------------------------------------------- */
+.page-bar{
+  position:fixed;left:0;right:0;top:var(--navh);z-index:calc(var(--z-nav) - 2);
+  background:rgba(15,17,16,.94);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line);
+  padding:10px 0;transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+body.intro-active .page-bar{opacity:0;pointer-events:none;transform:translateY(-8px)}
+.page-bar__tabs{min-width:0}
+.page-bar__inner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.page-bar__label{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--volt);display:flex;align-items:center;gap:10px;white-space:nowrap;
+}
+.page-bar__label::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--volt);display:block;
+}
+.page-bar__tabs{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.page-tab{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;
+  border-radius:999px;border:1px solid var(--line);background:rgba(24,27,25,.6);
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);transition:all .25s var(--ease);white-space:nowrap;
+}
+.page-tab:hover{color:var(--text);border-color:rgba(244,244,239,.38)}
+.page-tab[aria-pressed="true"]{
+  background:var(--volt);border-color:var(--volt);color:#12150D;font-weight:700;
+}
+.page-tab__num{opacity:.65;font-size:9.5px}
+.page-section-hidden{display:none !important}
+.page-footer-nav{
+  display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  margin-top:clamp(56px,8vh,96px);padding-top:clamp(32px,4.5vh,52px);border-top:1px solid var(--line);
+}
 
 /* Language controls are outside the inert intro navigation. */
 .language-switch{
@@ -262,7 +304,8 @@ input,select,textarea{font:inherit;color:inherit}
 body.intro-active .sound-help{bottom:auto;top:clamp(108px,14vh,150px)}
 .sound-help.is-visible{opacity:1;visibility:visible}
 body.has-cookie .sound{bottom:calc(var(--cookie-height,160px) + 12px)}
-body.has-cookie .sound-help{bottom:calc(var(--cookie-height,160px) + 62px)}
+body.has-cookie .sound-help{bottom:calc(var(--cookie-height,160px) + 62px);opacity:0;visibility:hidden}
+body.sound-used .sound-help{opacity:0;visibility:hidden}
 .sound-help span{display:block;margin-top:6px;color:var(--muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.02em}
 
 /* sound toggle + skip ----------------------------------------------------- */
@@ -399,7 +442,7 @@ body.no-webgl .hero__fallback{display:block}
 .hero__body{
   flex:1;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
   gap:clamp(16px,3vw,48px);align-items:center;
-  padding-top:clamp(72px,11vh,110px);padding-bottom:clamp(20px,4vh,44px);
+  padding-top:clamp(150px,19vh,225px);padding-bottom:clamp(28px,5vh,56px);
   min-height:0;
 }
 .hero__copy{max-width:640px;position:relative}
@@ -940,7 +983,262 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
 [data-reveal]{opacity:0;transform:translateY(18px)}
 .no-motion [data-reveal]{opacity:1;transform:none}
 
+/* ==========================================================================
+   22 · PAGES, ROSTER, GALLERY & SPACING PASS
+   ========================================================================== */
+
+/* generous spacing overrides ------------------------------------------------ */
+.section{padding:clamp(120px,18vh,250px) 0}
+.section--tight{padding-top:clamp(80px,11vh,150px)}
+.sec-head{margin-bottom:clamp(64px,11vh,140px)}
+.filters{gap:10px;margin-bottom:clamp(30px,4.2vh,48px)}
+.rows .row{padding:clamp(20px,2.8vh,30px) 0}
+.schedule__foot{margin-top:clamp(34px,4.6vh,56px)}
+.coaches__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3vw,44px);background:none;border:0}
+.coach{border:1px solid var(--line);min-height:clamp(440px,42vw,600px)}
+.coach__art img{width:100%;height:100%;object-fit:cover;filter:grayscale(.22) contrast(1.04);transition:transform 1s var(--ease),filter .6s var(--ease)}
+.coach:hover .coach__art img,.coach:focus-within .coach__art img{transform:scale(1.045);filter:none}
+.coach__body{min-height:0;margin-top:-64px;padding:0 clamp(22px,2.4vw,36px) clamp(26px,2.8vw,40px);gap:10px}
+.coach__name{font-size:clamp(20px,1.9vw,28px)}
+.coach__desc{font-size:14px;line-height:1.72;max-width:42ch}
+.coach__more ul{gap:8px;padding-top:16px}
+.coach__cta{
+  display:inline-flex;align-items:center;gap:10px;margin-top:8px;align-self:flex-start;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--volt);border-bottom:1px solid rgba(200,255,61,.35);padding-bottom:5px;
+  transition:color .2s var(--ease),border-color .2s var(--ease),gap .2s var(--ease);
+}
+.coach__cta::after{content:"\2192";font-size:12px;line-height:1}
+.coach__cta:hover{color:var(--volt-hi);border-color:var(--volt-hi);gap:14px}
+.numbers__grid{gap:clamp(14px,2vw,26px);background:none;border:0}
+.stat{border:1px solid var(--line);padding:clamp(30px,3.4vw,50px) clamp(22px,2.4vw,36px);min-height:clamp(230px,23vw,310px);gap:16px}
+.plans__grid{gap:clamp(24px,3vw,46px)}
+.plan{padding:clamp(30px,3vw,48px);gap:26px}
+.plan__list{gap:12px}
+.kit{gap:clamp(10px,1.2vw,18px);background:none;border:0}
+.kit__tile{border:1px solid var(--line);min-height:clamp(220px,24vw,310px);padding:clamp(22px,2.4vw,38px);gap:26px}
+.swatches{gap:clamp(8px,1vw,14px);background:none;border:0}
+.swatch{border:1px solid var(--line)}
+.footer{padding-top:clamp(64px,9vh,112px)}
+.footer__top{gap:clamp(32px,5vw,80px);padding-bottom:clamp(50px,8vh,100px)}
+.footer__col{gap:14px}
+.footer__bottom{padding-top:22px;padding-bottom:clamp(24px,3.4vh,36px)}
+.form-grid{gap:clamp(44px,7vw,120px)}
+.manifesto{padding:clamp(120px,22vh,300px) 0}
+.zones__track{gap:clamp(20px,2.2vw,34px);padding-top:clamp(34px,5vh,60px)}
+.zone{height:clamp(340px,54vh,540px)}
+
+/* page views --------------------------------------------------------------- */
+.page-view{position:relative;z-index:2;display:block}
+.page-view[hidden]{display:none !important}
+.page-view.is-entering{animation:pageIn .55s var(--ease) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.page-hero{
+  position:relative;z-index:2;
+  padding:clamp(190px,21vh,260px) 0 clamp(64px,8vh,116px);
+  border-bottom:1px solid var(--line-soft);
+}
+.page-hero__grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(40px,7vw,130px);align-items:end}
+.page-hero__eyebrow{display:flex;align-items:center;gap:12px;color:var(--volt)}
+.page-hero__eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--volt);flex:none;box-shadow:0 0 0 3px rgba(200,255,61,.12)}
+.page-hero__title{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(38px,7vw,104px);line-height:.94;letter-spacing:-.028em;
+  margin:clamp(22px,3.4vh,38px) 0 0;max-width:16ch;text-wrap:balance;
+}
+.page-hero__lede{margin-top:clamp(26px,3.6vh,44px);max-width:58ch}
+.page-hero__meta{
+  display:flex;flex-direction:column;gap:clamp(22px,3vh,34px);
+  border-left:1px solid var(--line);padding-left:clamp(22px,3vw,46px);
+}
+.page-hero__meta div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.page-hero__meta dt,.page-hero__meta .k{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6C736C}
+.page-hero__meta b{font-family:var(--font-display);font-weight:800;font-size:clamp(15px,1.3vw,19px);letter-spacing:.01em;line-height:1.3}
+
+.page-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(22px,3.4vw,56px);padding:clamp(38px,6vh,68px) 0 0;
+  border-top:1px solid var(--line-soft);margin-top:clamp(38px,6vh,70px);
+}
+.page-stats div{display:flex;flex-direction:column;gap:8px}
+.page-stats b{font-family:var(--font-display);font-weight:900;font-size:clamp(30px,3.4vw,52px);line-height:1;letter-spacing:-.02em;color:var(--text)}
+.page-stats span{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+
+/* roster ------------------------------------------------------------------- */
+.roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,3.4vw,58px)}
+.trainer{
+  position:relative;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  min-height:clamp(400px,36vw,560px);
+  border:1px solid var(--line);background:linear-gradient(165deg,#161917,#0F1110 82%);
+  overflow:hidden;
+}
+.trainer__photo{position:relative;overflow:hidden;background:#0B0D0C}
+.trainer__photo img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 22%;
+  filter:grayscale(.28) contrast(1.05);
+  transition:transform 1.1s var(--ease),filter .6s var(--ease);
+}
+.trainer:hover .trainer__photo img{transform:scale(1.05);filter:none}
+.trainer__photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(17,19,18,.05),rgba(17,19,18,.55) 100%),
+             linear-gradient(to top,rgba(17,19,18,.72),rgba(17,19,18,0) 46%);
+}
+.trainer__num{
+  position:absolute;z-index:2;left:18px;top:18px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:var(--volt);
+  display:flex;align-items:center;gap:8px;
+}
+.trainer__num::before{content:"";width:18px;height:1px;background:var(--volt);display:block}
+.trainer__body{
+  position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;
+  padding:clamp(24px,2.6vw,44px) clamp(22px,2.4vw,40px);
+}
+.trainer__role{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);line-height:1.5}
+.trainer__name{font-family:var(--font-display);font-weight:900;font-size:clamp(23px,2.2vw,34px);line-height:1.06;letter-spacing:-.015em}
+.trainer__bio{color:var(--muted);font-size:clamp(13.5px,1vw,15px);line-height:1.75;font-weight:300;max-width:40ch}
+.trainer__tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.trainer__tag{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:#A9B0A8;border:1px solid var(--line);padding:5px 10px;border-radius:999px;white-space:nowrap;
+}
+.trainer__facts{
+  display:flex;flex-direction:column;gap:10px;margin-top:auto;
+  padding-top:clamp(16px,2vh,22px);border-top:1px solid var(--line-soft);
+}
+.trainer__facts div{display:grid;grid-template-columns:minmax(72px,96px) minmax(0,1fr);gap:14px;align-items:baseline}
+.trainer__facts dt{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#6C736C}
+.trainer__facts dd{font-size:12.5px;color:#C6CCC6;font-weight:300;line-height:1.5;margin:0;min-width:0}
+
+/* gallery ------------------------------------------------------------------ */
+.gallery{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.3vw,20px)}
+.shot{
+  position:relative;overflow:hidden;background:#0B0D0C;border:1px solid var(--line-soft);
+  display:block;
+}
+.shot img{width:100%;height:100%;object-fit:cover;filter:grayscale(.22) contrast(1.04);transition:transform 1.1s var(--ease),filter .6s var(--ease)}
+.shot:hover img{transform:scale(1.05);filter:none}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,12,11,.86),rgba(10,12,11,0) 52%);pointer-events:none}
+.shot__cap{
+  position:absolute;z-index:2;left:0;right:0;bottom:0;padding:clamp(16px,1.8vw,26px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+}
+.shot__cap b{font-family:var(--font-display);font-weight:800;font-size:clamp(13px,1.15vw,17px);letter-spacing:.02em;line-height:1.25}
+.shot__cap span{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--volt);white-space:nowrap}
+.shot--wide{grid-column:span 4;aspect-ratio:16/9}
+.shot--half{grid-column:span 3;aspect-ratio:4/3}
+.shot--third{grid-column:span 2;aspect-ratio:4/5}
+.shot--tall{grid-column:span 2;aspect-ratio:3/4}
+.shot--full{grid-column:span 6;aspect-ratio:21/9}
+.shot--plan{background:radial-gradient(120% 120% at 20% 10%,rgba(62,74,18,.32),rgba(15,17,16,.9) 66%),#0F1110}
+.shot--plan svg{width:100%;height:100%;display:block}
+.shot--plan .zl{stroke:rgba(200,255,61,.24);fill:none;stroke-width:.8}
+.shot--plan .zl-strong{stroke:rgba(200,255,61,.5);fill:none;stroke-width:1}
+.shot--plan .zf{fill:rgba(200,255,61,.06)}
+.shot--plan::after{background:linear-gradient(to top,rgba(10,12,11,.9),rgba(10,12,11,0) 55%)}
+
+/* specs / feature rows ----------------------------------------------------- */
+.specs{border-top:1px solid var(--line);margin-top:clamp(30px,4vh,50px)}
+.specs__row{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(20px,4vw,70px);padding:clamp(22px,3vh,34px) 0;
+  border-bottom:1px solid var(--line-soft);align-items:baseline;
+}
+.specs__row dt{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8C938C}
+.specs__row dd{margin:0;font-size:clamp(14px,1.15vw,16.5px);color:#D3D8D1;font-weight:300;line-height:1.7;min-width:0}
+
+.feature-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(34px,6vw,110px);align-items:center}
+.feature-split__media{position:relative;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:#0B0D0C}
+.feature-split__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.18) contrast(1.03)}
+.feature-split__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(17,19,18,.5),rgba(17,19,18,0) 60%)}
+.feature-split__body{display:flex;flex-direction:column;gap:clamp(20px,2.8vh,30px)}
+.feature-split__body .h2{max-width:16ch}
+
+/* programs ----------------------------------------------------------------- */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,30px)}
+.phase{
+  display:flex;flex-direction:column;gap:16px;min-height:clamp(300px,27vw,380px);
+  border:1px solid var(--line);padding:clamp(24px,2.6vw,38px);
+  background:linear-gradient(180deg,#151816,#0F1110 88%);
+}
+.phase__num{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--volt)}
+.phase__title{font-family:var(--font-display);font-weight:900;font-size:clamp(17px,1.5vw,22px);line-height:1.15;letter-spacing:-.01em}
+.phase__text{color:var(--muted);font-size:13.5px;line-height:1.75;font-weight:300;margin-top:auto}
+.phase__meta{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#6C736C;border-top:1px solid var(--line-soft);padding-top:14px}
+
+.week{border-top:1px solid var(--line);margin-top:clamp(30px,4vh,46px)}
+.week__row{
+  display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) minmax(0,1.1fr);
+  gap:clamp(16px,3vw,44px);padding:clamp(20px,2.6vh,28px) 0;
+  border-bottom:1px solid var(--line-soft);align-items:baseline;
+}
+.week__row b{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--volt);font-weight:500}
+.week__row span{font-family:var(--font-display);font-weight:800;font-size:clamp(14px,1.2vw,18px)}
+.week__row em{font-style:normal;color:var(--muted);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.02em;line-height:1.8}
+
+/* voices ------------------------------------------------------------------- */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3.4vw,54px)}
+.voice{display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--line);padding-top:clamp(24px,3vh,34px)}
+.voice blockquote{
+  font-size:clamp(15px,1.25vw,18.5px);line-height:1.78;font-weight:300;color:#D6DBD3;margin:0;
+}
+.voice blockquote::before{content:"“";color:var(--volt);font-family:var(--font-display);font-size:1.4em;line-height:0;margin-right:2px}
+.voice figcaption{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.9;margin-top:auto}
+.voice figcaption b{display:block;color:var(--text);font-weight:500;letter-spacing:.14em}
+
+/* visit -------------------------------------------------------------------- */
+.visit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3vw,46px)}
+.visit-card{
+  display:flex;flex-direction:column;gap:18px;border:1px solid var(--line);
+  padding:clamp(26px,3vw,42px);background:linear-gradient(180deg,#151816,#0F1110 90%);
+}
+.visit-card h3{font-family:var(--font-display);font-weight:900;font-size:clamp(17px,1.5vw,22px);letter-spacing:-.01em}
+.visit-card p{color:var(--muted);font-size:13.5px;line-height:1.8;font-weight:300}
+.visit-card a{color:var(--text);border-bottom:1px solid rgba(200,255,61,.4);transition:color .2s}
+.visit-card a:hover{color:var(--volt)}
+.hours{display:flex;flex-direction:column;gap:10px}
+.hours div{display:flex;justify-content:space-between;gap:16px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:#C6CCC6;padding-bottom:10px;border-bottom:1px dashed rgba(244,244,239,.12)}
+.hours div:last-child{border-bottom:0;padding-bottom:0}
+.hours span:first-child{color:#7E857E;letter-spacing:.14em;text-transform:uppercase;font-size:9.5px}
+
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line-soft)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:clamp(22px,3vh,32px) 0;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:clamp(20px,4vw,60px);
+  font-family:var(--font-display);font-weight:800;font-size:clamp(15px,1.5vw,20px);line-height:1.4;
+  color:var(--text);transition:color .22s var(--ease);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--volt)}
+.faq summary::after{content:"+";font-family:var(--font-mono);font-weight:400;font-size:22px;line-height:1;color:var(--volt);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 clamp(24px,3vh,34px);max-width:78ch;color:var(--muted);font-weight:300;font-size:14.5px;line-height:1.85}
+
+.cta-band{
+  display:flex;justify-content:space-between;align-items:center;gap:clamp(24px,4vw,54px);flex-wrap:wrap;
+  border:1px solid rgba(200,255,61,.3);
+  background:radial-gradient(120% 160% at 0% 0%,rgba(62,74,18,.34),rgba(17,19,18,.2) 60%);
+  padding:clamp(30px,4.6vw,64px);
+}
+.cta-band__body{display:flex;flex-direction:column;gap:12px;max-width:52ch}
+.cta-band__title{font-family:var(--font-display);font-weight:900;font-size:clamp(22px,2.6vw,38px);line-height:1.05;letter-spacing:-.02em}
+.cta-band__body p{color:var(--muted);font-weight:300;font-size:14.5px;line-height:1.75}
+.cta-band__actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* coach page extras -------------------------------------------------------- */
+.coach-standards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3vw,46px);margin-top:clamp(30px,4vh,50px)}
+.coach-standards div{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);padding-top:22px}
+.coach-standards b{font-family:var(--font-display);font-weight:800;font-size:clamp(15px,1.3vw,18px)}
+.coach-standards p{color:var(--muted);font-size:13.5px;line-height:1.75;font-weight:300}
+
 /* ======================= RESPONSIVE ====================================== */
+@media (max-width:1400px){
+  .trainer{grid-template-columns:minmax(0,1fr);min-height:0}
+  .trainer__photo{aspect-ratio:4/3}
+  .trainer__photo::after{background:linear-gradient(to top,rgba(17,19,18,.68),rgba(17,19,18,0) 50%)}
+}
 @media (max-width:1240px){
   .nav__links{display:none}
   .nav__menu{display:inline-flex}
@@ -986,6 +1284,9 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .marquee__track{animation-duration:32s}
 }
 @media (max-width:720px){
+  :root{--navh:64px}
+  .page-bar__tabs{-webkit-mask-image:linear-gradient(to right,#000 88%,transparent 100%);mask-image:linear-gradient(to right,#000 88%,transparent 100%)}
+  .page-tab{height:34px;padding:0 12px;font-size:9px;letter-spacing:.1em}
   .nav{height:64px;gap:10px}
   .nav__right > a{display:none}
   .language-switch{top:10px}
@@ -1000,7 +1301,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .hero__title{font-size:clamp(32px,10.4vw,64px)}
   html[lang="de"] .hero__title{font-size:clamp(28px,7.7vw,56px)}
   /* phone override of the 980px tablet value above */
-  .hero__copy{padding-top:clamp(140px,33svh,300px)}
+  .hero__copy{padding-top:clamp(178px,34svh,320px)}
   .hero__eyebrow{font-size:10px;letter-spacing:.16em;margin-bottom:16px}
   .hero__actions{gap:8px}
   .hero__actions .btn{flex:1 1 auto}
@@ -1057,6 +1358,90 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .footer__brand{grid-column:auto}
 }
 
+/* ======================= PAGES · RESPONSIVE ============================== */
+@media (max-width:1080px){
+  .page-hero__grid{grid-template-columns:minmax(0,1fr);gap:clamp(30px,5vw,48px)}
+  .page-hero__meta{
+    border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:clamp(22px,3vh,30px);
+    flex-direction:row;flex-wrap:wrap;gap:clamp(22px,4vw,40px);
+  }
+  .page-hero__meta div{flex:1 1 160px}
+  .roster{grid-template-columns:minmax(0,1fr)}
+  .trainer{grid-template-columns:minmax(300px,.62fr) minmax(0,1fr);min-height:0}
+  .trainer__photo{aspect-ratio:auto;min-height:clamp(340px,44vw,460px)}
+  .phases{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .voices{grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vh,44px)}
+  .visit-grid{grid-template-columns:minmax(0,1fr)}
+  .coach-standards{grid-template-columns:minmax(0,1fr)}
+  .feature-split{grid-template-columns:minmax(0,1fr)}
+  .feature-split__media{aspect-ratio:16/9;max-height:520px}
+  .shot--wide,.shot--full{grid-column:span 6;aspect-ratio:16/9}
+  .shot--half{grid-column:span 3}
+}
+@media (max-width:980px){
+  .page-bar{padding:14px 0}
+  .page-bar__inner{gap:14px}
+  .page-bar__tabs{flex-wrap:nowrap;overflow-x:auto;max-width:100%;width:100%;padding-bottom:4px;scrollbar-width:none}
+  .page-bar__tabs::-webkit-scrollbar{display:none}
+  .page-bar__label{display:none}
+}
+@media (max-width:720px){
+  .page-hero{padding:clamp(150px,18vh,190px) 0 clamp(44px,6vh,70px)}
+  .page-hero__title{font-size:clamp(30px,8.6vw,54px);max-width:none}
+  .page-stats{grid-template-columns:minmax(0,1fr);gap:22px}
+  .page-stats b{font-size:clamp(26px,8vw,38px)}
+  .page-stats div{flex-direction:row;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line-soft);padding-bottom:14px}
+  .page-stats div:last-child{border-bottom:0}
+  .page-stats div b{flex:none}
+  .page-stats div span{text-align:right}
+  .roster{gap:28px}
+  .trainer{grid-template-columns:minmax(0,1fr)}
+  .trainer__photo{aspect-ratio:4/3}
+  .trainer__body{padding:clamp(20px,5vw,28px)}
+  .trainer__facts div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .trainer__facts dt{font-size:8.5px}
+  .phases{grid-template-columns:minmax(0,1fr)}
+  .phase{min-height:0}
+  .week__row{grid-template-columns:minmax(0,1fr);gap:8px}
+  .week__row b{letter-spacing:.14em}
+  .specs__row{grid-template-columns:minmax(0,1fr);gap:8px}
+  .gallery{gap:10px}
+  .shot--wide,.shot--full,.shot--half,.shot--third,.shot--tall{grid-column:span 6;aspect-ratio:4/3}
+  .gallery--pair .shot--third{grid-column:span 3;aspect-ratio:3/4}
+  .gallery--pair .shot--third .shot__cap{flex-direction:column;align-items:flex-start;gap:4px;padding:12px}
+  .gallery--pair .shot--third .shot__cap b{font-size:11px}
+  .gallery--pair .shot--third .shot__cap span{font-size:8px}
+  .cta-band{flex-direction:column;align-items:flex-start}
+  .cta-band__actions{width:100%}
+  .cta-band__actions .btn{flex:1 1 auto}
+  .coach{min-height:0}
+  .coach__art{aspect-ratio:4/3;flex:none}
+  .coach__body{margin-top:-56px}
+  .voice blockquote{font-size:15px}
+  .coaches__grid{gap:26px}
+  .footer__col{gap:12px}
+  .faq summary{font-size:15px}
+}
+@media (max-width:480px){
+  .page-bar{padding:9px 0}
+  .page-bar .page-tab__num{display:none}
+  .page-bar__tabs{gap:6px}
+  .page-tab{padding:0 10px;font-size:8.5px;letter-spacing:.06em;height:32px}
+}
+
+@media (max-width:420px){
+  .page-bar__tabs{gap:8px}
+}
+
+@media (max-height:760px) and (min-width:981px){
+  .hero__body{padding-top:clamp(130px,17vh,180px)}
+  .hero__title{font-size:clamp(34px,min(6.2vw,10.4vh),96px)}
+  html[lang="de"] .hero__title{font-size:clamp(28px,min(4.9vw,9.2vh),80px)}
+}
+@media (max-height:700px) and (max-width:980px){
+  .hero__copy{padding-top:clamp(160px,26svh,210px)}
+}
+
 /* ======================= MOTION PREFERENCES ============================== */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -1073,6 +1458,8 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
 }
 @media (hover:none){
   .coach__more{grid-template-rows:1fr;opacity:1}
+  /* the sound toggle is visible on touch devices; the floating hint only adds clutter */
+  .sound-help{display:none !important}
 }
 @media print{
   .intro,.cursor,.meter,.cookie,.sound,.sound-help,.language-switch,.nav,.skip{display:none !important}
@@ -1102,6 +1489,20 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     <button class="btn btn--ghost btn--sm nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" data-i18n="nav.menu">Menü</button>
   </div>
 </header>
+
+<!-- ========================= PAGE SWITCHER ============================== -->
+<div class="page-bar" id="pageBar" role="navigation" aria-label="Studio pages" data-i18n-aria-label="page.navLabel">
+  <div class="shell page-bar__inner">
+    <p class="page-bar__label" data-i18n="page.bar">Explore the lab</p>
+    <div class="page-bar__tabs" role="group" aria-label="Choose a page" data-i18n-aria-label="page.groupLabel">
+      <button class="page-tab" type="button" data-page-tab="home" aria-pressed="true"><span class="page-tab__num">01</span><span data-i18n="page.home">Overview</span></button>
+      <button class="page-tab" type="button" data-page-tab="coaches" aria-pressed="false"><span class="page-tab__num">02</span><span data-i18n="page.coaches">Coaches</span></button>
+      <button class="page-tab" type="button" data-page-tab="facility" aria-pressed="false"><span class="page-tab__num">03</span><span data-i18n="page.facility">Facility</span></button>
+      <button class="page-tab" type="button" data-page-tab="programs" aria-pressed="false"><span class="page-tab__num">04</span><span data-i18n="page.programs">Programs</span></button>
+      <button class="page-tab" type="button" data-page-tab="visit" aria-pressed="false"><span class="page-tab__num">05</span><span data-i18n="page.visit">Visit</span></button>
+    </div>
+  </div>
+</div>
 
 <div class="menu" id="mobileMenu" aria-hidden="true">
   <nav class="menu__links" aria-label="Mobile Navigation" data-i18n-aria-label="nav.mobile">
@@ -1188,6 +1589,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
 
 <!-- ============================ HERO =================================== -->
 <main id="main" tabindex="-1">
+<div class="page-view" data-page-view="home" id="page-home">
 <section class="hero" id="top" aria-label="Kraftwerk Lab">
   <canvas id="gl" class="hero__canvas" aria-hidden="true"></canvas>
   <div class="hero__fallback" aria-hidden="true"><span class="kmark" data-kmark style="width:min(46vw,300px)"></span></div>
@@ -1510,11 +1912,15 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       <p class="sec-head__num"><span data-i18n="coaches.index">05 / Trainer</span></p>
       <div class="sec-head__body">
         <h2 class="h2" id="coachesTitle" data-i18n="coaches.title">Trainer mit System.</h2>
-        <p class="lede" data-i18n="coaches.lede">Kein Motivationstheater. Vier Spezialisten für Technik, Laststeuerung und Regeneration — mit klaren Zuständigkeiten.</p>
+        <p class="lede" data-i18n="coaches.lede">Kein Motivationstheater. Acht Spezialisten für Technik, Laststeuerung und Regeneration — mit klaren Zuständigkeiten.</p>
+        <a class="btn btn--ghost btn--sm" href="#page-coaches" data-page-link="coaches" data-magnetic>
+          <span data-i18n="cta.allCoaches">Alle acht Trainer ansehen</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
       </div>
     </div>
     <div class="coaches__grid" id="coachGrid"></div>
-    <p class="note" style="margin-top:18px" data-i18n="coaches.note">Illustrative, fiktive Trainerprofile und prozedurale Zweifarbporträts. Keine realen Personen.</p>
+    <p class="note" style="margin-top:26px" data-i18n="coaches.note">Fiktive, illustrative Trainerprofile für dieses Demo-Projekt. Keine realen Personen, keine echten Anstellungen.</p>
   </div>
 </section>
 
@@ -1529,7 +1935,47 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       </div>
     </div>
     <div class="numbers__grid" id="statsGrid"></div>
-    <p class="note" style="margin-top:18px" data-i18n="stats.note">Alle Werte sind konzeptionelle Demo-Statistiken und keine geprüften Unternehmenszahlen.</p>
+    <p class="note" style="margin-top:26px" data-i18n="stats.note">Alle Werte sind konzeptionelle Demo-Statistiken und keine geprüften Unternehmenszahlen.</p>
+  </div>
+</section>
+
+<!-- ============================ 06b INSIDE THE LAB ==================== -->
+<section class="section" id="lab-gallery" aria-labelledby="labGalleryTitle">
+  <div class="shell">
+    <div class="sec-head">
+      <p class="sec-head__num"><span data-i18n="gallery.index">06 / Inside the lab</span></p>
+      <div class="sec-head__body">
+        <h2 class="h2" id="labGalleryTitle" data-i18n="gallery.title">Inside the lab.</h2>
+        <p class="lede" data-i18n="gallery.lede">Coaching floors, calibrated steel and the quiet rooms behind them. A first look at the spaces — the full tour lives on its own page.</p>
+      </div>
+    </div>
+
+    <div class="gallery gallery--pair">
+      <a class="shot shot--wide" href="#page-facility" data-page-link="facility">
+        <img src="images/trainers/lena-action.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+        <span class="shot__cap"><b data-i18n="gallery.cap.0">Strength floor · squat assessment</b><span>KW / 01</span></span>
+      </a>
+      <a class="shot shot--tall" href="#page-coaches" data-page-link="coaches">
+        <img src="images/trainers/aylin-demir.jpg" alt="" width="1024" height="1536" loading="lazy" decoding="async" />
+        <span class="shot__cap"><b data-i18n="gallery.cap.1">Boxing studio</b><span>KW / 02</span></span>
+      </a>
+      <a class="shot shot--half" href="#page-facility" data-page-link="facility">
+        <img src="images/trainers/matteo-action.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+        <span class="shot__cap"><b data-i18n="gallery.cap.2">Conditioning &amp; telemetry</b><span>KW / 03</span></span>
+      </a>
+      <a class="shot shot--half" href="#page-facility" data-page-link="facility">
+        <img src="images/trainers/sora-takahashi.jpg" alt="" width="1024" height="1536" loading="lazy" decoding="async" />
+        <span class="shot__cap"><b data-i18n="gallery.cap.3">Rig &amp; rings</b><span>KW / 04</span></span>
+      </a>
+    </div>
+
+    <div class="page-footer-nav" style="border-top:0;padding-top:clamp(24px,4vh,40px);margin-top:0">
+      <p class="note" data-i18n="gallery.note">Concept imagery for this demo. The facility page shows every zone, its equipment and the recovery suite.</p>
+      <a class="btn btn--ghost btn--sm" href="#page-facility" data-page-link="facility">
+        <span data-i18n="cta.facility">Take the facility tour</span>
+        <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1555,6 +2001,33 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     <div class="plans__grid" id="plansGrid"></div>
 
     <p class="note plans__note" id="billingTerms">Monatliche Abrechnung, monatlich kündbar. Alle Preise inkl. MwSt. — Demo-Konditionen ohne Vertragswirkung.</p>
+  </div>
+</section>
+
+<!-- ============================ 07b VOICES ============================ -->
+<section class="section" id="voices" aria-labelledby="voicesTitle">
+  <div class="shell">
+    <div class="sec-head">
+      <p class="sec-head__num"><span data-i18n="voices.index">07 / Members</span></p>
+      <div class="sec-head__body">
+        <h2 class="h2" id="voicesTitle" data-i18n="voices.title">People, not memberships.</h2>
+        <p class="lede" data-i18n="voices.lede">Three voices from the floor. What changes is rarely the weight — it is the way a week is planned.</p>
+      </div>
+    </div>
+    <div class="voices">
+      <figure class="voice">
+        <blockquote data-i18n="voices.0.quote">I stopped guessing. Every block now has a number to hit, and a coach who checks whether I actually hit it.</blockquote>
+        <figcaption><b>Jonas R.</b><span data-i18n="voices.0.meta">Member since 2023 · Strength track</span></figcaption>
+      </figure>
+      <figure class="voice">
+        <blockquote data-i18n="voices.1.quote">The first studio where the warm-up is planned as carefully as the main set. My shoulders finally cooperate.</blockquote>
+        <figcaption><b>Miriam K.</b><span data-i18n="voices.1.meta">Member since 2024 · Mobility &amp; recovery</span></figcaption>
+      </figure>
+      <figure class="voice">
+        <blockquote data-i18n="voices.2.quote">Two sessions a week, measured every six weeks. Less time in the gym than before — and faster than I have ever been.</blockquote>
+        <figcaption><b>Deniz A.</b><span data-i18n="voices.2.meta">Member since 2022 · Sprint mechanics</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -1642,6 +2115,390 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     </div>
   </div>
 </section>
+</div>
+
+<!-- ========================= PAGE 02 · COACHES ========================= -->
+<section class="page-view" data-page-view="coaches" id="page-coaches" aria-labelledby="coachesPageTitle" hidden>
+  <div class="page-hero">
+    <div class="shell">
+      <div class="page-hero__grid">
+        <div>
+          <p class="page-hero__eyebrow label" data-i18n="coaches.page.eyebrow">02 / Das Trainerteam</p>
+          <h1 class="page-hero__title" id="coachesPageTitle" data-i18n-html="coaches.page.title">Acht Spezialisten.<br />Ein Standard.</h1>
+          <p class="lede page-hero__lede" data-i18n="coaches.page.lede">Jede Einheit hat eine verantwortliche Person, ein Ziel und einen Messpunkt. Lerne das Team kennen, das die Woche im Labor plant — von der ersten Technikprüfung bis zur letzten Regenerationseinheit.</p>
+        </div>
+        <div class="page-hero__meta">
+          <div><span class="k" data-i18n="coaches.page.meta.0.k">Team</span><b data-i18n="coaches.page.meta.0.v">8 Trainer</b></div>
+          <div><span class="k" data-i18n="coaches.page.meta.1.k">Disziplinen</span><b data-i18n="coaches.page.meta.1.v">Kraft, Ausdauer, Boxen, Mobilität</b></div>
+          <div><span class="k" data-i18n="coaches.page.meta.2.k">Betreuung</span><b data-i18n="coaches.page.meta.2.v">1:1 oder Kleingruppe</b></div>
+        </div>
+      </div>
+      <div class="page-stats">
+        <div><b>8</b><span data-i18n="coaches.page.stat.0">Spezialisten im Team</span></div>
+        <div><b>96</b><span data-i18n="coaches.page.stat.1">Betreute Einheiten pro Woche</span></div>
+        <div><b>1:1</b><span data-i18n="coaches.page.stat.2">Standard für Technikprüfungen</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="roster.index">Team / 2026</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="roster.title">Wer dich coacht.</h2>
+          <p class="lede" data-i18n="roster.lede">Acht Profile mit klaren Zuständigkeiten. Jede Person verantwortet einen Schwerpunkt, prüft Technik und dokumentiert Fortschritt — damit niemand raten muss.</p>
+        </div>
+      </div>
+      <div class="roster" id="rosterGrid"></div>
+      <p class="note" style="margin-top:30px" data-i18n="roster.note">Fiktive Profile und konzeptionelle Bilder für dieses Demo-Projekt. Verfügbarkeiten und Qualifikationen sind illustrativ.</p>
+    </div>
+  </div>
+
+  <div class="section section--tight" style="border-top:1px solid var(--line-soft)">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="standards.index">Standard / 04</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="standards.title">Wie wir coachen.</h2>
+          <p class="lede" data-i18n="standards.lede">Vier Regeln, die für jede Einheit gelten — unabhängig davon, wer vorne steht.</p>
+        </div>
+      </div>
+      <div class="coach-standards">
+        <div><b data-i18n="standards.0.title">Erst messen</b><p data-i18n="standards.0.text">Kein Satz ohne Ausgangswert. Technik, Bewegungsweg und Last werden vor dem ersten Arbeitssatz dokumentiert.</p></div>
+        <div><b data-i18n="standards.1.title">Dann reduzieren</b><p data-i18n="standards.1.text">Wir streichen lieber eine Übung als eine saubere Wiederholung. Qualität ist die einzige Währung im Labor.</p></div>
+        <div><b data-i18n="standards.2.title">Sichtbar machen</b><p data-i18n="standards.2.text">Jede sechste Woche prüfen wir denselben Test. Fortschritt ist eine Zahl, kein Gefühl.</p></div>
+        <div><b data-i18n="standards.3.title">Zurückgeben</b><p data-i18n="standards.3.text">Nach jeder Einheit bekommst du eine kurze Einordnung: was funktioniert hat und was als Nächstes kommt.</p></div>
+      </div>
+      <div class="page-footer-nav">
+        <a class="btn btn--ghost btn--sm" href="#page-home" data-page-link="home" data-i18n="page.backHome">Zurück zur Übersicht</a>
+        <a class="btn btn--volt btn--sm" href="#page-facility" data-page-link="facility">
+          <span data-i18n="page.nextFacility">Weiter: Das Studio</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PAGE 03 · FACILITY ======================== -->
+<section class="page-view" data-page-view="facility" id="page-facility" aria-labelledby="facilityPageTitle" hidden>
+  <div class="page-hero">
+    <div class="shell">
+      <div class="page-hero__grid">
+        <div>
+          <p class="page-hero__eyebrow label" data-i18n="facility.page.eyebrow">03 / Das Studio</p>
+          <h1 class="page-hero__title" id="facilityPageTitle" data-i18n-html="facility.page.title">1.240 m².<br />Fünf Zonen.</h1>
+          <p class="lede page-hero__lede" data-i18n="facility.page.lede">Ein Grundriss, der Training erzwingt statt es zu dekorieren: kalibrierte Kraftflächen, eine Sprintbahn, ein Diagnostiklabor und Räume, in denen Regeneration als Arbeit gilt.</p>
+        </div>
+        <div class="page-hero__meta">
+          <div><span class="k" data-i18n="facility.page.meta.0.k">Fläche</span><b data-i18n="facility.page.meta.0.v">1.240 m² auf einer Ebene</b></div>
+          <div><span class="k" data-i18n="facility.page.meta.1.k">Zonen</span><b data-i18n="facility.page.meta.1.v">Kraft · Ausdauer · Funktionell · Regeneration · Studio</b></div>
+          <div><span class="k" data-i18n="facility.page.meta.2.k">Zugang</span><b data-i18n="facility.page.meta.2.v">Mo–So · 06:00–23:00</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--tight">
+    <div class="shell">
+      <figure class="shot shot--full" style="border:1px solid var(--line)">
+        <img src="images/trainers/lena-action.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+        <span class="shot__cap"><b data-i18n="facility.hero.cap">Kraftfläche · Technikprüfung am Kraftständer</b><span data-i18n="facility.hero.tag">Ebene 01</span></span>
+      </figure>
+
+      <div class="sec-head" style="margin-top:clamp(70px,10vh,130px)">
+        <p class="sec-head__num"><span data-i18n="facility.zones.index">Rundgang / 05</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="facility.zones.title">Der Rundgang.</h2>
+          <p class="lede" data-i18n="facility.zones.lede">Fünf Bereiche, ein Weg. Vom ersten Messwert bis zur letzten ruhigen Minute ist alles zu Fuß erreichbar.</p>
+        </div>
+      </div>
+
+      <ol class="specs" aria-label="Trainingszonen" data-i18n-aria-label="facility.zones.label">
+        <div class="specs__row"><dt>01 · <span data-i18n="zone.strength">Kraftbereich</span></dt><dd data-i18n="facility.zone.strength">Zwölf kalibrierte Kraftständer, acht Plattformen, Wettkampfhanteln und ein separater Bereich für Zug- und Druckmuster.</dd></div>
+        <div class="specs__row"><dt>02 · <span data-i18n="zone.cardio">Ausdauerbereich</span></dt><dd data-i18n="facility.zone.cardio">Sprintbahn, Air Bikes und Rudergeräte mit Leistungsmessung — aufgebaut für Intervalle mit klaren Zielwerten.</dd></div>
+        <div class="specs__row"><dt>03 · <span data-i18n="zone.functional">Funktionelles Training</span></dt><dd data-i18n="facility.zone.functional">Rig mit Ringen und Schlingen, Schlittenbahnen und offene Fläche für komplexe Bewegungen.</dd></div>
+        <div class="specs__row"><dt>04 · <span data-i18n="zone.recovery">Regenerationsbereich</span></dt><dd data-i18n="facility.zone.recovery">Sauna, Kaltbecken, Atemraum und Behandlungsbank — der leiseste Teil des Studios.</dd></div>
+        <div class="specs__row"><dt>05 · <span data-i18n="zone.studio">Studio</span></dt><dd data-i18n="facility.zone.studio">Gedämpftes Licht, warmer Boden, 60 m² für Technik, Yoga und geführte Einheiten.</dd></div>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section section--tight">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="facility.gallery.index">Einblicke / 04</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="facility.gallery.title">Flächen und Räume.</h2>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure class="shot shot--half">
+          <img src="images/trainers/matteo-action.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+          <span class="shot__cap"><b data-i18n="facility.gallery.cap.0">Diagnostics &amp; interval control</b><span>KW / 03</span></span>
+        </figure>
+        <figure class="shot shot--half">
+          <img src="images/trainers/lena-action.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+          <span class="shot__cap"><b data-i18n="facility.gallery.cap.strength">Strength floor · platform and rack line</b><span>KW / 01</span></span>
+        </figure>
+        <figure class="shot shot--half shot--plan">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+            <path class="zl" d="M40 40h320v220H40z"/>
+            <path class="zl" d="M40 150h150M190 40v220M250 40v100M250 190v70"/>
+            <path class="zl-strong" d="M70 90h80v40H70zM70 190h70v40H70z"/>
+            <path class="zf" d="M270 70h60v50h-60zM270 190h50v40h-50z"/>
+            <path class="zl" d="M280 225h40M280 235h40"/>
+            <circle class="zl-strong" cx="320" cy="120" r="10" fill="none"/>
+            <path class="zl" d="M0 280h400"/>
+          </svg>
+          <span class="shot__cap"><b data-i18n="facility.gallery.cap.1">Recovery · sauna, plunge and resting bays</b><span data-i18n="facility.gallery.plan">Plan</span></span>
+        </figure>
+        <figure class="shot shot--half shot--plan">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+            <path class="zl" d="M30 50h340v200H30z"/>
+            <path class="zl" d="M30 110h340M30 170h340M110 50v200M190 50v200M270 50v200"/>
+            <path class="zl-strong" d="M110 50v200M270 50v200M110 170h160"/>
+            <path class="zf" d="M110 170h160v80H110z"/>
+            <path class="zl" d="M120 90h50M120 130h50M290 90h50M290 130h50"/>
+            <circle class="zl-strong" cx="190" cy="95" r="12" fill="none"/>
+          </svg>
+          <span class="shot__cap"><b data-i18n="facility.gallery.cap.2">Studio · mat layout for technique and mobility</b><span data-i18n="facility.gallery.plan">Plan</span></span>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--tight" style="border-top:1px solid var(--line-soft)">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="facility.specs.index">Daten / Studio</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="facility.specs.title">Ausstattung.</h2>
+          <p class="lede" data-i18n="facility.specs.lede">Konzeptdaten für dieses Demo-Projekt. Sie beschreiben den gedachten Standort, nicht ein geprüftes Bauvorhaben.</p>
+        </div>
+      </div>
+      <dl class="specs">
+        <div class="specs__row"><dt data-i18n="facility.spec.area.k">Gesamtfläche</dt><dd data-i18n="facility.spec.area.v">1.240 m² auf einer Ebene, ohne Stufen zwischen den Zonen</dd></div>
+        <div class="specs__row"><dt data-i18n="facility.spec.racks.k">Kraftständer</dt><dd data-i18n="facility.spec.racks.v">12 kalibrierte Ständer, 8 Plattformen, 24 Hanteln</dd></div>
+        <div class="specs__row"><dt data-i18n="facility.spec.cardio.k">Ausdauer</dt><dd data-i18n="facility.spec.cardio.v">40 m Sprintbahn, 6 Air Bikes, 4 Rudergeräte mit Leistungsmessung</dd></div>
+        <div class="specs__row"><dt data-i18n="facility.spec.lab.k">Diagnostik</dt><dd data-i18n="facility.spec.lab.v">Kraftmessplatten, Laktat- und Atemgastest, Videoanalyse in zwei Ebenen</dd></div>
+        <div class="specs__row"><dt data-i18n="facility.spec.recovery.k">Regeneration</dt><dd data-i18n="facility.spec.recovery.v">Sauna für 10, zwei Kaltbecken, Atemraum, zwei Behandlungsbanken</dd></div>
+        <div class="specs__row"><dt data-i18n="facility.spec.capacity.k">Kapazität</dt><dd data-i18n="facility.spec.capacity.v">Maximal 28 Personen gleichzeitig, Kurse mit 12 bis 18 Plätzen</dd></div>
+      </dl>
+      <div class="page-footer-nav">
+        <a class="btn btn--ghost btn--sm" href="#page-coaches" data-page-link="coaches" data-i18n="page.backCoaches">Zurück: Trainerteam</a>
+        <a class="btn btn--volt btn--sm" href="#page-programs" data-page-link="programs">
+          <span data-i18n="page.nextPrograms">Weiter: Programme</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PAGE 04 · PROGRAMS ======================== -->
+<section class="page-view" data-page-view="programs" id="page-programs" aria-labelledby="programsPageTitle" hidden>
+  <div class="page-hero">
+    <div class="shell">
+      <div class="page-hero__grid">
+        <div>
+          <p class="page-hero__eyebrow label" data-i18n="programs.page.eyebrow">04 / Programme &amp; Methode</p>
+          <h1 class="page-hero__title" id="programsPageTitle" data-i18n-html="programs.page.title">Ein Block.<br />Vier Phasen.</h1>
+          <p class="lede page-hero__lede" data-i18n="programs.page.lede">Wir planen in Blöcken von sechs Wochen. Jeder Block beginnt mit einem Test und endet mit demselben Test. Dazwischen liegt Arbeit, die sich an deinen Werten orientiert — nicht an einem fertigen Plan von der Stange.</p>
+        </div>
+        <div class="page-hero__meta">
+          <div><span class="k" data-i18n="programs.page.meta.0.k">Blocklänge</span><b data-i18n="programs.page.meta.0.v">6 Wochen · 2 Prüfungen</b></div>
+          <div><span class="k" data-i18n="programs.page.meta.1.k">Einheiten</span><b data-i18n="programs.page.meta.1.v">2 bis 4 pro Woche</b></div>
+          <div><span class="k" data-i18n="programs.page.meta.2.k">Start</span><b data-i18n="programs.page.meta.2.v">Jederzeit nach der Standortbestimmung</b></div>
+        </div>
+      </div>
+      <div class="page-stats">
+        <div><b>6</b><span data-i18n="programs.page.stat.0">Wochen pro Block</span></div>
+        <div><b>4</b><span data-i18n="programs.page.stat.1">Phasen pro Block</span></div>
+        <div><b>12</b><span data-i18n="programs.page.stat.2">Messwerte pro Prüfung</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="programs.phases.index">Methode / 04</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="programs.phases.title">Der Block im Detail.</h2>
+          <p class="lede" data-i18n="programs.phases.lede">Vier Phasen, die aufeinander aufbauen. Die Last steigt, der Umfang sinkt — und am Ende steht ein Wert, der vorher nicht da war.</p>
+        </div>
+      </div>
+      <div class="phases">
+        <article class="phase">
+          <p class="phase__num">01</p>
+          <h3 class="phase__title" data-i18n="programs.phase.0.title">Standort</h3>
+          <p class="phase__meta" data-i18n="programs.phase.0.meta">Woche 1 · Test &amp; Technik</p>
+          <p class="phase__text" data-i18n="programs.phase.0.text">Kraft, Bewegungsweg und Ausdauer werden gemessen. Du bekommst einen Ausgangswert für jede Übung, die im Block vorkommt.</p>
+        </article>
+        <article class="phase">
+          <p class="phase__num">02</p>
+          <h3 class="phase__title" data-i18n="programs.phase.1.title">Aufbau</h3>
+          <p class="phase__meta" data-i18n="programs.phase.1.meta">Woche 2–3 · Volumen</p>
+          <p class="phase__text" data-i18n="programs.phase.1.text">Mehr saubere Wiederholungen bei kontrollierter Last. Technikstandards bleiben unverändert, die Pausen werden kürzer.</p>
+        </article>
+        <article class="phase">
+          <p class="phase__num">03</p>
+          <h3 class="phase__title" data-i18n="programs.phase.2.title">Intensität</h3>
+          <p class="phase__meta" data-i18n="programs.phase.2.meta">Woche 4–5 · Last</p>
+          <p class="phase__text" data-i18n="programs.phase.2.text">Weniger Umfang, mehr Last. Jeder Arbeitssatz hat ein Ziel und einen Abbruchkriterium — beides wird dokumentiert.</p>
+        </article>
+        <article class="phase">
+          <p class="phase__num">04</p>
+          <h3 class="phase__title" data-i18n="programs.phase.3.title">Prüfung</h3>
+          <p class="phase__meta" data-i18n="programs.phase.3.meta">Woche 6 · Retest</p>
+          <p class="phase__text" data-i18n="programs.phase.3.text">Derselbe Test wie in Woche 1, gleiche Bedingungen. Danach entscheiden wir gemeinsam über den nächsten Block.</p>
+        </article>
+      </div>
+
+      <div class="sec-head" style="margin-top:clamp(80px,12vh,150px)">
+        <p class="sec-head__num"><span data-i18n="programs.week.index">Beispielwoche</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="programs.week.title">Eine Woche im Labor.</h2>
+          <p class="lede" data-i18n="programs.week.lede">Beispielhafter Aufbau für einen Kraftschwerpunkt. Deine Woche wird nach der Standortbestimmung angepasst.</p>
+        </div>
+      </div>
+      <div class="week">
+        <div class="week__row"><b data-i18n="day.Mo">Mo</b><span data-i18n="programs.week.0.focus">Kraft · Unterkörper</span><em data-i18n="programs.week.0.note">Kniebeuge 5×4 · Zubehör 3 Sätze · 70 Minuten</em></div>
+        <div class="week__row"><b data-i18n="day.Di">Di</b><span data-i18n="programs.week.1.focus">Regeneration · Mobilität</span><em data-i18n="programs.week.1.note">Geführter Flow · Atemprotokoll · 40 Minuten</em></div>
+        <div class="week__row"><b data-i18n="day.Mi">Mi</b><span data-i18n="programs.week.2.focus">Kraft · Oberkörper</span><em data-i18n="programs.week.2.note">Bankdrücken 5×4 · Zugmuster 3 Sätze · 70 Minuten</em></div>
+        <div class="week__row"><b data-i18n="day.Do">Do</b><span data-i18n="programs.week.3.focus">Ausdauer · Zone 2</span><em data-i18n="programs.week.3.note">40 Minuten gleichmäßig · Laktatkontrolle optional</em></div>
+        <div class="week__row"><b data-i18n="day.Fr">Fr</b><span data-i18n="programs.week.4.focus">Kraft · Ganzkörper</span><em data-i18n="programs.week.4.note">Kreuzheben 4×3 · Rumpf · 60 Minuten</em></div>
+        <div class="week__row"><b data-i18n="day.Sa">Sa</b><span data-i18n="programs.week.5.focus">Freiwillig · Boxen oder Studio</span><em data-i18n="programs.week.5.note">Technik oder Bewegungsfluss · 45 Minuten</em></div>
+        <div class="week__row"><b data-i18n="day.So">So</b><span data-i18n="programs.week.6.focus">Geschlossen</span><em data-i18n="programs.week.6.note">Ruhetag · keine Einheiten, keine Kurse</em></div>
+      </div>
+
+      <div class="cta-band" style="margin-top:clamp(70px,10vh,120px)">
+        <div class="cta-band__body">
+          <h2 class="cta-band__title" data-i18n="programs.cta.title">Starte mit einem Test, nicht mit einem Vertrag.</h2>
+          <p data-i18n="programs.cta.text">Die Standortbestimmung dauert 60 Minuten und endet mit einem Plan, den du behalten kannst.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--volt" href="#probetraining" data-goto-home="probetraining" data-magnetic data-i18n="cta.trial">Kostenloses Probetraining</a>
+          <a class="btn btn--ghost" href="#page-visit" data-page-link="visit" data-i18n="cta.visit">Besuch planen</a>
+        </div>
+      </div>
+
+      <div class="page-footer-nav">
+        <a class="btn btn--ghost btn--sm" href="#page-facility" data-page-link="facility" data-i18n="page.backFacility">Zurück: Das Studio</a>
+        <a class="btn btn--volt btn--sm" href="#page-visit" data-page-link="visit">
+          <span data-i18n="page.nextVisit">Weiter: Besuch</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PAGE 05 · VISIT =========================== -->
+<section class="page-view" data-page-view="visit" id="page-visit" aria-labelledby="visitPageTitle" hidden>
+  <div class="page-hero">
+    <div class="shell">
+      <div class="page-hero__grid">
+        <div>
+          <p class="page-hero__eyebrow label" data-i18n="visit.page.eyebrow">05 / Besuch</p>
+          <h1 class="page-hero__title" id="visitPageTitle" data-i18n-html="visit.page.title">Komm vorbei.<br />Dann reden wir.</h1>
+          <p class="lede page-hero__lede" data-i18n="visit.page.lede">Ein Termin, ein Rundgang, ein ehrliches Gespräch. Kein Verkaufsgespräch, keine Verpflichtung — nur ein erster Satz und ein Blick auf die Zahlen.</p>
+        </div>
+        <div class="page-hero__meta">
+          <div><span class="k" data-i18n="visit.page.meta.0.k">Ort</span><b data-i18n="visit.page.meta.0.v">Kraftwerk Lab · Demo-Standort</b></div>
+          <div><span class="k" data-i18n="visit.page.meta.1.k">Erreichbar</span><b data-i18n="visit.page.meta.1.v">ÖPNV · Fahrrad · Parkhaus</b></div>
+          <div><span class="k" data-i18n="visit.page.meta.2.k">Antwortzeit</span><b data-i18n="visit.page.meta.2.v">Innerhalb von 24 Stunden</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--tight">
+    <div class="shell">
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3 data-i18n="visit.address.title">Adresse</h3>
+          <p data-i18n-html="visit.address.text">Kraftwerk Lab<br />Werkstraße 12<br />20097 Hamburg<br />Deutschland</p>
+          <p class="note" data-i18n="visit.address.note">Fiktive Adresse für dieses Demo-Projekt. Es existiert kein Studio an diesem Ort.</p>
+        </div>
+        <div class="visit-card">
+          <h3 data-i18n="visit.hours.title">Öffnungszeiten</h3>
+          <div class="hours">
+            <div><span data-i18n="visit.hours.week">Mo–Fr</span><span>06:00 — 23:00</span></div>
+            <div><span data-i18n="visit.hours.sat">Sa</span><span>08:00 — 20:00</span></div>
+            <div><span data-i18n="visit.hours.sun">So</span><span data-i18n="visit.hours.sunValue">Geschlossen</span></div>
+            <div><span data-i18n="visit.hours.coach">Coaching</span><span>07:00 — 21:00</span></div>
+          </div>
+        </div>
+        <div class="visit-card">
+          <h3 data-i18n="visit.contact.title">Kontakt</h3>
+          <p data-i18n-html="visit.contact.text">Schreib uns, wenn du eine Frage zu Technik, Betreuung oder Regeneration hast. Wir antworten persönlich, nicht per Autopilot.</p>
+          <p><a href="mailto:hello@kraftwerk-lab.example">hello@kraftwerk-lab.example</a><br /><a href="tel:+494012345678">+49 40 1234 5678</a></p>
+          <p class="note" data-i18n="visit.contact.note">Demo-Kontaktangaben, keine echten Rufnummern oder Postfächer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--tight" style="border-top:1px solid var(--line-soft)">
+    <div class="shell">
+      <div class="sec-head">
+        <p class="sec-head__num"><span data-i18n="visit.faq.index">Fragen / 06</span></p>
+        <div class="sec-head__body">
+          <h2 class="h2" data-i18n="visit.faq.title">Häufige Fragen.</h2>
+          <p class="lede" data-i18n="visit.faq.lede">Die sechs Fragen, die im ersten Gespräch am häufigsten kommen — kurz und ohne Marketing beantwortet.</p>
+        </div>
+      </div>
+      <div class="faq">
+        <details>
+          <summary data-i18n="visit.faq.0.q">Brauche ich Vorerfahrung?</summary>
+          <p data-i18n="visit.faq.0.a">Nein. Die Standortbestimmung startet bei deinem aktuellen Niveau. Technik wird vor Last aufgebaut, unabhängig davon, ob du zum ersten Mal oder seit zehn Jahren trainierst.</p>
+        </details>
+        <details>
+          <summary data-i18n="visit.faq.1.q">Wie lange dauert eine Einheit?</summary>
+          <p data-i18n="visit.faq.1.a">Kurse laufen 45 bis 60 Minuten. Einzeltermine mit Technikprüfung dauern 60 bis 75 Minuten. Die Zeit für Aufwärmen ist immer enthalten.</p>
+        </details>
+        <details>
+          <summary data-i18n="visit.faq.2.q">Kann ich monatlich kündigen?</summary>
+          <p data-i18n="visit.faq.2.a">In diesem Konzept ja: monatliche Zahlung ist monatlich kündbar, jährliche Zahlung läuft zwölf Monate mit 15 Prozent Nachlass. Alle Preise sind Demo-Werte ohne Vertragswirkung.</p>
+        </details>
+        <details>
+          <summary data-i18n="visit.faq.3.q">Gibt es Duschen und Umkleiden?</summary>
+          <p data-i18n="visit.faq.3.a">Ja, inklusive Schließfächern, Handtuchservice und einer kleinen Ruhezone. Die Regenerationsräume sind nur in der Leistungs- und Elite-Mitgliedschaft enthalten.</p>
+        </details>
+        <details>
+          <summary data-i18n="visit.faq.4.q">Wie werden Fortschritte gemessen?</summary>
+          <p data-i18n="visit.faq.4.a">Jede sechste Woche mit demselben Test: Kraft, Bewegungsweg, Ausdauer und subjektive Belastung. Du bekommst die Werte schriftlich und vergleichbar.</p>
+        </details>
+        <details>
+          <summary data-i18n="visit.faq.5.q">Ist die Seite ein echtes Studio?</summary>
+          <p data-i18n="visit.faq.5.a">Nein. Kraftwerk Lab ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Adresse, Team, Preise und Kursplan sind illustrativ.</p>
+        </details>
+      </div>
+
+      <div class="cta-band" style="margin-top:clamp(70px,10vh,120px)">
+        <div class="cta-band__body">
+          <h2 class="cta-band__title" data-i18n="visit.cta.title">Ein Termin. Ein Trainer. Eine ehrliche Antwort.</h2>
+          <p data-i18n="visit.cta.text">Das Demo-Formular zeigt den kompletten Ablauf — inklusive Validierung und lokalem Erfolgszustand.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--volt" href="#probetraining" data-goto-home="probetraining" data-magnetic data-i18n="cta.trial">Kostenloses Probetraining</a>
+          <button class="btn btn--ghost" type="button" data-legal="imprint" data-i18n="legal.imprint">Impressum</button>
+        </div>
+      </div>
+
+      <div class="page-footer-nav">
+        <a class="btn btn--ghost btn--sm" href="#page-programs" data-page-link="programs" data-i18n="page.backPrograms">Zurück: Programme</a>
+        <a class="btn btn--volt btn--sm" href="#page-home" data-page-link="home">
+          <span data-i18n="page.backHome">Zurück zur Übersicht</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
@@ -1663,11 +2520,15 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
         <a href="#schedule" data-i18n="nav.schedule">Kursplan</a>
         <a href="#coaches" data-i18n="nav.coaches">Trainer</a>
         <a href="#numbers" data-i18n="footer.numbers">Zahlen</a>
+        <button type="button" data-page-link="facility" data-i18n="page.facility">Studio</button>
+        <button type="button" data-page-link="programs" data-i18n="page.programs">Programme</button>
       </div>
       <div class="footer__col">
         <h3 data-i18n="footer.access">Zugang</h3>
         <a href="#membership" data-i18n="nav.membership">Mitgliedschaft</a>
         <a href="#probetraining" data-i18n="nav.trial">Probetraining</a>
+        <button type="button" data-page-link="visit" data-i18n="page.visit">Besuch</button>
+        <button type="button" data-page-link="coaches" data-i18n="page.coaches">Trainer</button>
         <button type="button" data-scroll-top data-i18n="footer.top">Nach oben</button>
       </div>
       <div class="footer__col">
@@ -1916,27 +2777,48 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       ]
     },
 
+    /* Home teaser — four of the eight coaches, with full-bleed portraits. */
     coaches: [
       {
         name: 'Lena Vogt', spec: 'coach.0.spec', desc: 'coach.0.desc',
         more: ['coach.0.more.0', 'coach.0.more.1', 'coach.0.more.2', 'coach.0.more.3'],
-        art: { head: 44, tilt: -4, shoulder: 116, accent: 0.55 }
-      },
-      {
-        name: 'Matteo Krüger', spec: 'coach.1.spec', desc: 'coach.1.desc',
-        more: ['coach.1.more.0', 'coach.1.more.1', 'coach.1.more.2', 'coach.1.more.3'],
-        art: { head: 47, tilt: 3, shoulder: 120, accent: 0.42 }
+        photo: 'images/trainers/lena-vogt.jpg', role: 'coach.role.head'
       },
       {
         name: 'Aylin Demir', spec: 'coach.2.spec', desc: 'coach.2.desc',
         more: ['coach.2.more.0', 'coach.2.more.1', 'coach.2.more.2', 'coach.2.more.3'],
-        art: { head: 42, tilt: -7, shoulder: 108, accent: 0.6 }
+        photo: 'images/trainers/aylin-demir.jpg', role: 'coach.role.specialist'
+      },
+      {
+        name: 'Henrik Lindner', spec: 'coach.1.spec', desc: 'coach.1.desc',
+        more: ['coach.1.more.0', 'coach.1.more.1', 'coach.1.more.2', 'coach.1.more.3'],
+        photo: 'images/trainers/henrik-lindner.jpg', role: 'coach.role.specialist'
       },
       {
         name: 'Rosa Lindqvist', spec: 'coach.3.spec', desc: 'coach.3.desc',
         more: ['coach.3.more.0', 'coach.3.more.1', 'coach.3.more.2', 'coach.3.more.3'],
-        art: { head: 45, tilt: 6, shoulder: 112, accent: 0.48 }
+        photo: 'images/trainers/rosa-lindqvist.jpg', role: 'coach.role.specialist'
       }
+    ],
+
+    /* Full coaching team for the coaches page. */
+    trainers: [
+      { name: 'Lena Vogt', photo: 'images/trainers/lena-vogt.jpg', role: 'trainer.0.role', bio: 'trainer.0.bio',
+        tags: ['coach.0.more.0', 'coach.0.more.1', 'coach.0.more.2'], cred: 'trainer.0.cred', days: 'trainer.0.days', langs: 'trainer.0.langs' },
+      { name: 'Henrik Lindner', photo: 'images/trainers/henrik-lindner.jpg', role: 'trainer.1.role', bio: 'trainer.1.bio',
+        tags: ['trainer.1.tag.0', 'trainer.1.tag.1', 'trainer.1.tag.2'], cred: 'trainer.1.cred', days: 'trainer.1.days', langs: 'trainer.1.langs' },
+      { name: 'Matteo Krüger', photo: 'images/trainers/matteo-kruger.jpg', role: 'trainer.2.role', bio: 'trainer.2.bio',
+        tags: ['coach.1.more.0', 'coach.1.more.1', 'coach.1.more.2'], cred: 'trainer.2.cred', days: 'trainer.2.days', langs: 'trainer.2.langs' },
+      { name: 'Aylin Demir', photo: 'images/trainers/aylin-demir.jpg', role: 'trainer.3.role', bio: 'trainer.3.bio',
+        tags: ['coach.2.more.0', 'coach.2.more.1', 'coach.2.more.3'], cred: 'trainer.3.cred', days: 'trainer.3.days', langs: 'trainer.3.langs' },
+      { name: 'Rosa Lindqvist', photo: 'images/trainers/rosa-lindqvist.jpg', role: 'trainer.4.role', bio: 'trainer.4.bio',
+        tags: ['coach.3.more.0', 'coach.3.more.1', 'coach.3.more.2'], cred: 'trainer.4.cred', days: 'trainer.4.days', langs: 'trainer.4.langs' },
+      { name: 'Sora Takahashi', photo: 'images/trainers/sora-takahashi.jpg', role: 'trainer.6.role', bio: 'trainer.6.bio',
+        tags: ['trainer.6.tag.0', 'trainer.6.tag.1', 'trainer.6.tag.2'], cred: 'trainer.6.cred', days: 'trainer.6.days', langs: 'trainer.6.langs' },
+      { name: 'Marcus Vance', photo: 'images/trainers/marcus-vance.jpg', role: 'trainer.5.role', bio: 'trainer.5.bio',
+        tags: ['trainer.5.tag.0', 'trainer.5.tag.1', 'trainer.5.tag.2'], cred: 'trainer.5.cred', days: 'trainer.5.days', langs: 'trainer.5.langs' },
+      { name: 'Clara Bergmann', photo: 'images/trainers/clara-bergmann.jpg', role: 'trainer.7.role', bio: 'trainer.7.bio',
+        tags: ['trainer.7.tag.0', 'trainer.7.tag.1', 'trainer.7.tag.2'], cred: 'trainer.7.cred', days: 'trainer.7.days', langs: 'trainer.7.langs' }
     ],
 
     stats: [
@@ -2325,7 +3207,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "tier.elite.feature.3": "Movement analysis",
     "tier.elite.feature.4": "Priority booking",
     "legal.imprint.sub": "Demo project · legal details not verified",
-    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo notice:</b> KRAFTWERK LAB is a fictional brand and a design and coding demo. There is no real studio, operator or address. The following information is placeholder copy, <b>not</b> legally valid provider information.</div><h3>Provider identification (§ 5 DDG)</h3><p>The operator’s name and address must be added before publication. This demo deliberately does not invent company details, registration numbers or VAT IDs.</p><h3>Required before going live</h3><ul><li>Full company name and serviceable address</li><li>Authorized representative</li><li>Register court and registration number, if applicable</li><li>VAT identification number</li><li>Contact email and phone number</li><li>Person responsible for content</li></ul><h3>Image credits</h3><p>All graphics, the K mark and coach portraits are generated procedurally in the browser. No stock photographs are used.</p>",
+    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo notice:</b> KRAFTWERK LAB is a fictional brand and a design and coding demo. There is no real studio, operator or address. The following information is placeholder copy, <b>not</b> legally valid provider information.</div><h3>Provider identification (§ 5 DDG)</h3><p>The operator’s name and address must be added before publication. This demo deliberately does not invent company details, registration numbers or VAT IDs.</p><h3>Required before going live</h3><ul><li>Full company name and serviceable address</li><li>Authorized representative</li><li>Register court and registration number, if applicable</li><li>VAT identification number</li><li>Contact email and phone number</li><li>Person responsible for content</li></ul><h3>Image credits</h3><p>The K mark and all interface graphics are generated procedurally in the browser. The coach portraits and room imagery used on this demo site are AI-generated concept images — not photographs of real people or real studios. No stock photography is used.</p>",
     "legal.privacy.sub": "Transparency about this demo’s actual data processing",
     "legal.privacy.body": "<div class=\"modal__demo\"><b>In short:</b> This demo does not send form data to a server, set tracking cookies or load analytics or marketing scripts. Optional services would only be enabled with explicit consent; none are implemented in this demo.</div><h3>Essential storage</h3><p>Your consent choice is stored in <code>localStorage</code> under <code>kw.consent.v1</code>, with the selected categories and a timestamp. Your language (<code>kw.language.v1</code>) and sound preference (<code>kw.sound.v1</code>) are also stored locally so they are remembered on your next visit. These preferences are not used for tracking. Browser storage may be unavailable in private or restricted browsing; the site still works without it.</p><h3>Trial session form</h3><p>Your entries stay in the browser and are not sent or saved. A real endpoint is prepared as an integration boundary in the code. Before production, it needs appropriate privacy notices, retention periods and a legal basis.</p><h3>Sound</h3><p>Audio is synthesized locally using the Web Audio API. No microphone, audio recording, remote audio service or audio download is used. Sound is enabled by default, subject to browser autoplay rules; you can mute it at any time. The spatial stereo effect is not certified Dolby Atmos.</p><h3>External resources</h3><p>This page loads fonts from Google Fonts and the Three.js, GSAP and Lenis libraries from a CDN. Your IP address is necessarily transmitted to those providers. Self-host these resources for a live deployment.</p><h3>Your rights</h3><p>You can change or withdraw consent using “Cookie settings” in the footer. Data subject rights (access, correction, deletion and objection) require a real controller, which has not yet been identified here.</p><div class=\"modal__demo\">This is not a legally reviewed privacy document. Legal review is required before publication.</div>",
     "legal.terms.sub": "Illustrative demo conditions, not a contract",
@@ -2626,7 +3508,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "tier.elite.feature.3": "Bewegungsanalyse",
     "tier.elite.feature.4": "Bevorzugte Buchung",
     "legal.imprint.sub": "Demoprojekt · keine geprüften Rechtsangaben",
-    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo-Hinweis:</b> KRAFTWERK LAB ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Es existiert kein reales Studio, kein Betreiber und keine Anschrift. Die folgenden Angaben sind Platzhalter und <b>keine</b> rechtsgültigen Anbieterinformationen.</div><h3>Anbieterkennzeichnung (§ 5 DDG)</h3><p>Name und Anschrift des Betreibers sind vor einer Veröffentlichung zu ergänzen. In dieser Demo werden bewusst keine erfundenen Firmendaten, Registernummern oder Umsatzsteuer-IDs angegeben.</p><h3>Vor dem Live-Betrieb erforderlich</h3><ul><li>Vollständiger Firmenname und ladungsfähige Anschrift</li><li>Vertretungsberechtigte Person</li><li>Registergericht und Registernummer, falls vorhanden</li><li>Umsatzsteuer-Identifikationsnummer</li><li>Kontakt: E-Mail und Telefon</li><li>Verantwortliche Person für den Inhalt</li></ul><h3>Bildnachweis</h3><p>Alle Grafiken, das K-Signet und die Trainerporträts sind prozedural im Browser erzeugt. Es werden keine Stockfotos verwendet.</p>",
+    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo-Hinweis:</b> KRAFTWERK LAB ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Es existiert kein reales Studio, kein Betreiber und keine Anschrift. Die folgenden Angaben sind Platzhalter und <b>keine</b> rechtsgültigen Anbieterinformationen.</div><h3>Anbieterkennzeichnung (§ 5 DDG)</h3><p>Name und Anschrift des Betreibers sind vor einer Veröffentlichung zu ergänzen. In dieser Demo werden bewusst keine erfundenen Firmendaten, Registernummern oder Umsatzsteuer-IDs angegeben.</p><h3>Vor dem Live-Betrieb erforderlich</h3><ul><li>Vollständiger Firmenname und ladungsfähige Anschrift</li><li>Vertretungsberechtigte Person</li><li>Registergericht und Registernummer, falls vorhanden</li><li>Umsatzsteuer-Identifikationsnummer</li><li>Kontakt: E-Mail und Telefon</li><li>Verantwortliche Person für den Inhalt</li></ul><h3>Bildnachweis</h3><p>Das K-Signet und alle Grafiken der Oberfläche sind prozedural im Browser erzeugt. Die Trainerporträts und Raumaufnahmen dieser Demo sind KI-generierte Konzeptbilder — keine Fotografien realer Personen oder realer Studios. Es werden keine Stockfotos verwendet.</p>",
     "legal.privacy.sub": "Transparenz über die tatsächliche Datenverarbeitung dieser Demo",
     "legal.privacy.body": "<div class=\"modal__demo\"><b>Kurzfassung:</b> Diese Demo überträgt keine Formulardaten an einen Server, setzt keine Tracking-Cookies und lädt keine Analyse- oder Marketing-Skripte. Optionale Dienste würden nur nach ausdrücklicher Einwilligung aktiviert; in dieser Demo ist kein solcher Dienst implementiert.</div><h3>Technisch notwendige Speicherung</h3><p>Deine Einwilligung wird im <code>localStorage</code> unter <code>kw.consent.v1</code> gespeichert, einschließlich der gewählten Kategorien und eines Zeitstempels. Deine Sprache (<code>kw.language.v1</code>) und Toneinstellung (<code>kw.sound.v1</code>) werden ebenfalls lokal gespeichert und beim nächsten Besuch wiederhergestellt. Diese Einstellungen dienen nicht der Nachverfolgung. In privaten oder eingeschränkten Browsern kann die Speicherung fehlen; die Seite funktioniert trotzdem.</p><h3>Probetraining-Formular</h3><p>Die Eingaben bleiben im Browser und werden nicht versendet oder gespeichert. Eine echte Serverschnittstelle ist im Code als Integrationsgrenze vorbereitet. Vor dem Produktivbetrieb sind Datenschutzhinweise, Löschfristen und eine Rechtsgrundlage erforderlich.</p><h3>Ton</h3><p>Audio wird lokal mit der Web-Audio-Programmierschnittstelle erzeugt. Es werden weder Mikrofon noch Tonaufzeichnung, externer Audiodienst oder Audiodownload verwendet. Ton ist vorbehaltlich der automatischen Wiedergaberegeln des Browsers standardmäßig aktiviert und jederzeit stummschaltbar. Der Stereo-Raumklang ist kein zertifiziertes Dolby Atmos.</p><h3>Externe Ressourcen</h3><p>Diese Seite lädt Schriftarten von Google Fonts sowie Three.js, GSAP und Lenis über ein CDN. Dabei wird technisch bedingt deine IP-Adresse an den jeweiligen Anbieter übertragen. Für den Live-Betrieb sollten diese Ressourcen selbst gehostet werden.</p><h3>Deine Rechte</h3><p>Du kannst die Einwilligung jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen. Betroffenenrechte (Auskunft, Berichtigung, Löschung, Widerspruch) setzen einen realen Verantwortlichen voraus, der hier noch nicht benannt ist.</p><div class=\"modal__demo\">Diese Seite ist kein rechtsgeprüftes Datenschutzdokument. Vor Veröffentlichung ist eine anwaltliche Prüfung erforderlich.</div>",
     "legal.terms.sub": "Beispielhafte Demo-Konditionen ohne Vertragswirkung",
@@ -2636,6 +3518,514 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "brand.index": "001"
   }
 };
+
+  /* Additional dictionary for the expanded pages. Kept in one block so both
+     locales are guaranteed to expose exactly the same key set. */
+  var I18N_EXTRA = {
+  "en": {
+    "page.navLabel": "Studio pages",
+    "page.groupLabel": "Choose a page",
+    "page.bar": "Explore the lab",
+    "page.home": "Overview",
+    "page.coaches": "Coaches",
+    "page.facility": "Facility",
+    "page.programs": "Programs",
+    "page.visit": "Visit",
+    "page.backHome": "Back to overview",
+    "page.nextFacility": "Next: the facility",
+    "page.backCoaches": "Back: coaches",
+    "page.nextPrograms": "Next: programs",
+    "page.backFacility": "Back: the facility",
+    "page.nextVisit": "Next: visit",
+    "page.backPrograms": "Back: programs",
+    "cta.profile": "View profile",
+    "cta.allCoaches": "See all eight coaches",
+    "cta.facility": "Take the facility tour",
+    "cta.visit": "Plan a visit",
+    "coaches.lede": "Four specialists on the floor, eight in the team — each with a clear remit for technique, load control and recovery.",
+    "coaches.note": "Fictional, illustrative coach profiles for this demo project. Not real people and not real appointments.",
+    "gallery.index": "06 / Inside the lab",
+    "gallery.title": "Inside the lab.",
+    "gallery.lede": "Coaching floors, calibrated steel and the quiet rooms behind them. A first look at the spaces — the full tour lives on its own page.",
+    "gallery.cap.0": "Strength floor · technique review",
+    "gallery.cap.1": "Aylin Demir · boxing studio",
+    "gallery.cap.2": "Conditioning & telemetry",
+    "gallery.cap.3": "Sora Takahashi · rig & rings",
+    "gallery.note": "Concept imagery for this demo. The facility page shows every zone, its equipment and the recovery suite.",
+    "voices.index": "07 / Members",
+    "voices.title": "People, not memberships.",
+    "voices.lede": "Three voices from the floor. What changes is rarely the weight — it is the way a week is planned.",
+    "voices.0.quote": "I stopped guessing. Every block now has a number to hit, and a coach who checks whether I actually hit it.",
+    "voices.0.meta": "Member since 2023 · Strength track",
+    "voices.1.quote": "The first studio where the warm-up is planned as carefully as the main set. My shoulders finally cooperate.",
+    "voices.1.meta": "Member since 2024 · Mobility & recovery",
+    "voices.2.quote": "Two sessions a week, measured every six weeks. Less time in the gym than before — and faster than I have ever been.",
+    "voices.2.meta": "Member since 2022 · Sprint mechanics",
+    "coaches.page.eyebrow": "02 / The coaching team",
+    "coaches.page.title": "Eight specialists.<br />One standard.",
+    "coaches.page.lede": "Every session has an owner, a target and a measurement. Meet the team that plans the week in the lab — from the first technique check to the last recovery block.",
+    "coaches.page.meta.0.k": "Team",
+    "coaches.page.meta.0.v": "8 coaches",
+    "coaches.page.meta.1.k": "Disciplines",
+    "coaches.page.meta.1.v": "Strength, endurance, boxing, mobility",
+    "coaches.page.meta.2.k": "Format",
+    "coaches.page.meta.2.v": "1:1 or small group",
+    "coaches.page.stat.0": "Specialists on the team",
+    "coaches.page.stat.1": "Coached sessions per week",
+    "coaches.page.stat.2": "Standard for technique checks",
+    "roster.index": "Team / 2026",
+    "roster.title": "Who coaches you.",
+    "roster.lede": "Eight profiles with clear remits. Each coach owns one discipline, checks technique and documents progress — so nobody has to guess.",
+    "roster.note": "Fictional profiles and concept imagery for this demo project. Availability and qualifications are illustrative.",
+    "roster.cred": "Credentials",
+    "roster.days": "On the floor",
+    "roster.langs": "Languages",
+    "standards.index": "Standard / 04",
+    "standards.title": "How we coach.",
+    "standards.lede": "Four rules that apply to every session — regardless of who is standing at the front.",
+    "standards.0.title": "Measure first",
+    "standards.0.text": "No set without a baseline. Technique, range of motion and load are recorded before the first working set.",
+    "standards.1.title": "Then reduce",
+    "standards.1.text": "We would rather cut an exercise than a clean repetition. Quality is the only currency in the lab.",
+    "standards.2.title": "Make it visible",
+    "standards.2.text": "Every sixth week we run the same test. Progress is a number, not a feeling.",
+    "standards.3.title": "Give it back",
+    "standards.3.text": "After each session you get a short read-out: what worked and what comes next.",
+    "trainer.0.role": "Head coach · strength & Olympic weightlifting",
+    "trainer.0.bio": "Lena builds the strength block from the first assessment onwards. She watches setup, bar path and load, and stops a set before it turns into a guess.",
+    "trainer.0.cred": "MSc sports science · 12 years coaching · national-level weightlifting",
+    "trainer.0.days": "Mon–Fri · 07:00–15:00",
+    "trainer.0.langs": "German, English",
+    "trainer.1.role": "Powerlifting & biomechanics",
+    "trainer.1.bio": "Henrik reads movement before he adds weight. His sessions are quiet, precise and built around positions you can repeat under load.",
+    "trainer.1.tag.0": "Powerlifting",
+    "trainer.1.tag.1": "Max strength",
+    "trainer.1.tag.2": "Movement screening",
+    "trainer.1.cred": "Certified powerlifting coach · movement screening · 14 years",
+    "trainer.1.days": "Mon, Wed, Fri · 12:00–20:00",
+    "trainer.1.langs": "German, English",
+    "trainer.2.role": "Performance & conditioning",
+    "trainer.2.bio": "Matteo manages intensity, pacing and recovery. No interval without a target wattage, no block without a benchmark to compare it to.",
+    "trainer.2.cred": "Endurance coach · lactate testing · 9 years",
+    "trainer.2.days": "Tue–Fri · 06:30–14:30",
+    "trainer.2.langs": "German, English, Italian",
+    "trainer.3.role": "Boxing & intervals",
+    "trainer.3.bio": "Aylin trains distance, angles and rhythm. Every round has a job; footwork and controlled power are coached before pace.",
+    "trainer.3.cred": "Amateur boxing coach · conditioning · 8 years",
+    "trainer.3.days": "Tue, Thu, Sat · 16:00–21:00",
+    "trainer.3.langs": "German, English, Turkish",
+    "trainer.4.role": "Mobility, yoga & recovery",
+    "trainer.4.bio": "Rosa treats range of motion as a trainable quality. Mobility, breathing and recovery become one protocol instead of three separate habits.",
+    "trainer.4.cred": "Yoga teacher · mobility screening · 11 years",
+    "trainer.4.days": "Wed–Sun · 08:00–16:00",
+    "trainer.4.langs": "German, English, Swedish",
+    "trainer.5.role": "Sprint mechanics & athletic performance",
+    "trainer.5.bio": "Marcus coaches speed as a skill. Sprint mechanics, sled work and timed acceleration blocks are measured to the hundredth of a second.",
+    "trainer.5.tag.0": "Sprint mechanics",
+    "trainer.5.tag.1": "Acceleration",
+    "trainer.5.tag.2": "Sled work",
+    "trainer.5.cred": "Sprinter & athletics coach · timing systems · 11 years",
+    "trainer.5.days": "Mon–Thu · 08:00–16:00",
+    "trainer.5.langs": "English, German",
+    "trainer.6.role": "Calisthenics & rings",
+    "trainer.6.bio": "Sora builds control before volume. Rings, straps and bodyweight progressions are programmed with the same precision as barbell work.",
+    "trainer.6.tag.0": "Calisthenics",
+    "trainer.6.tag.1": "Gymnastic rings",
+    "trainer.6.tag.2": "Bodyweight strength",
+    "trainer.6.cred": "Gymnastics coach · calisthenics level 3 · 9 years",
+    "trainer.6.days": "Tue, Thu · 10:00–18:00",
+    "trainer.6.langs": "German, English, Japanese",
+    "trainer.7.role": "Physiotherapy & neuro-recovery",
+    "trainer.7.bio": "Clara bridges the gap between treatment and training. She screens joints, writes return-to-load plans and runs the recovery suite.",
+    "trainer.7.tag.0": "Physiotherapy",
+    "trainer.7.tag.1": "Return to load",
+    "trainer.7.tag.2": "Breathwork",
+    "trainer.7.cred": "State-certified physiotherapist · sports rehab · 10 years",
+    "trainer.7.days": "Tue–Sat · 09:00–17:00",
+    "trainer.7.langs": "German, English",
+    "facility.page.eyebrow": "03 / The facility",
+    "facility.page.title": "1,240 m².<br />Five zones.",
+    "facility.page.lede": "A floor plan that demands training instead of decorating it: calibrated strength areas, a sprint lane, a diagnostics lab and rooms where recovery counts as work.",
+    "facility.page.meta.0.k": "Area",
+    "facility.page.meta.0.v": "1,240 m² on one level",
+    "facility.page.meta.1.k": "Zones",
+    "facility.page.meta.1.v": "Strength · endurance · functional · recovery · studio",
+    "facility.page.meta.2.k": "Access",
+    "facility.page.meta.2.v": "Mon–Sun · 06:00–23:00",
+    "facility.hero.cap": "Strength floor · technique check at the rack",
+    "facility.hero.tag": "Level 01",
+    "facility.zones.index": "Walkthrough / 05",
+    "facility.zones.title": "The walkthrough.",
+    "facility.zones.lede": "Five areas, one route. From the first measurement to the last quiet minute, everything is within walking distance.",
+    "facility.zones.label": "Training zones",
+    "facility.zone.strength": "Twelve calibrated racks, eight platforms, competition bars and a separate area for pulling and pressing patterns.",
+    "facility.zone.cardio": "Sprint lane, air bikes and rowers with power measurement — laid out for intervals with clear targets.",
+    "facility.zone.functional": "Rig with rings and straps, sled lanes and open floor for complex movement.",
+    "facility.zone.recovery": "Sauna, cold plunge, breathing room and treatment bench — the quietest part of the studio.",
+    "facility.zone.studio": "Dimmed light, warm floor, 60 m² for technique, yoga and guided sessions.",
+    "facility.gallery.index": "Inside / 04",
+    "facility.gallery.title": "Spaces and rooms.",
+    "facility.gallery.cap.0": "Diagnostics & interval control",
+    "facility.gallery.cap.1": "Recovery & cold plunge",
+    "facility.gallery.cap.2": "Rig, rings and open floor",
+    "facility.gallery.cap.3": "Studio for technique and mobility",
+    "facility.gallery.cap.strength": "Strength floor · platform and rack line",
+    "facility.gallery.plan": "Plan",
+    "facility.specs.index": "Data / Facility",
+    "facility.specs.title": "Equipment.",
+    "facility.specs.lede": "Concept figures for this demo project. They describe the imagined location, not a verified construction plan.",
+    "facility.spec.area.k": "Total area",
+    "facility.spec.area.v": "1,240 m² on one level, no steps between zones",
+    "facility.spec.racks.k": "Racks",
+    "facility.spec.racks.v": "12 calibrated racks, 8 platforms, 24 bars",
+    "facility.spec.cardio.k": "Endurance",
+    "facility.spec.cardio.v": "40 m sprint lane, 6 air bikes, 4 rowers with power measurement",
+    "facility.spec.lab.k": "Diagnostics",
+    "facility.spec.lab.v": "Force plates, lactate and gas testing, two-plane video analysis",
+    "facility.spec.recovery.k": "Recovery",
+    "facility.spec.recovery.v": "Sauna for 10, two cold plunges, breathing room, two treatment benches",
+    "facility.spec.capacity.k": "Capacity",
+    "facility.spec.capacity.v": "Maximum 28 people at once, classes with 12 to 18 places",
+    "programs.page.eyebrow": "04 / Programs & method",
+    "programs.page.title": "One block.<br />Four phases.",
+    "programs.page.lede": "We plan in six-week blocks. Every block opens with a test and closes with the same test. In between sits work that follows your numbers, not a template.",
+    "programs.page.meta.0.k": "Block length",
+    "programs.page.meta.0.v": "6 weeks · 2 assessments",
+    "programs.page.meta.1.k": "Sessions",
+    "programs.page.meta.1.v": "2 to 4 per week",
+    "programs.page.meta.2.k": "Start",
+    "programs.page.meta.2.v": "Anytime after the baseline assessment",
+    "programs.page.stat.0": "Weeks per block",
+    "programs.page.stat.1": "Phases per block",
+    "programs.page.stat.2": "Measurements per assessment",
+    "programs.phases.index": "Method / 04",
+    "programs.phases.title": "The block in detail.",
+    "programs.phases.lede": "Four phases that build on each other. Load rises, volume falls — and at the end there is a number that was not there before.",
+    "programs.phase.0.title": "Baseline",
+    "programs.phase.0.meta": "Week 1 · test & technique",
+    "programs.phase.0.text": "Strength, movement quality and endurance are measured. You leave with a starting value for every lift in the block.",
+    "programs.phase.1.title": "Build",
+    "programs.phase.1.meta": "Weeks 2–3 · volume",
+    "programs.phase.1.text": "More clean repetitions at controlled load. Technique standards stay the same; the rest periods get shorter.",
+    "programs.phase.2.title": "Intensity",
+    "programs.phase.2.meta": "Weeks 4–5 · load",
+    "programs.phase.2.text": "Less volume, more load. Every working set has a target and a stop criterion — both are recorded.",
+    "programs.phase.3.title": "Assessment",
+    "programs.phase.3.meta": "Week 6 · retest",
+    "programs.phase.3.text": "The same test as week 1, under the same conditions. Then we decide together what the next block should be.",
+    "programs.week.index": "Sample week",
+    "programs.week.title": "A week in the lab.",
+    "programs.week.lede": "A sample layout for a strength-focused block. Your week is adjusted after the baseline assessment.",
+    "programs.week.0.focus": "Strength · lower body",
+    "programs.week.0.note": "Back squat 5×4 · accessory 3 sets · 70 minutes",
+    "programs.week.1.focus": "Recovery · mobility",
+    "programs.week.1.note": "Guided flow · breathing protocol · 40 minutes",
+    "programs.week.2.focus": "Strength · upper body",
+    "programs.week.2.note": "Bench press 5×4 · pull pattern 3 sets · 70 minutes",
+    "programs.week.3.focus": "Endurance · zone 2",
+    "programs.week.3.note": "40 minutes steady · optional lactate check",
+    "programs.week.4.focus": "Strength · full body",
+    "programs.week.4.note": "Deadlift 4×3 · trunk work · 60 minutes",
+    "programs.week.5.focus": "Optional · boxing or studio",
+    "programs.week.5.note": "Technique or mobility flow · 45 minutes",
+    "programs.week.6.focus": "Closed",
+    "programs.week.6.note": "Rest day · no sessions, no classes",
+    "programs.cta.title": "Start with a test, not a contract.",
+    "programs.cta.text": "The baseline assessment takes 60 minutes and ends with a plan you keep.",
+    "visit.page.eyebrow": "05 / Visit",
+    "visit.page.title": "Come by.<br />Then we talk.",
+    "visit.page.lede": "One appointment, one walkthrough, one honest conversation. No sales pitch, no obligation — just a first set and a look at your numbers.",
+    "visit.page.meta.0.k": "Location",
+    "visit.page.meta.0.v": "Kraftwerk Lab · demo location",
+    "visit.page.meta.1.k": "Getting here",
+    "visit.page.meta.1.v": "Public transport · bike · car park",
+    "visit.page.meta.2.k": "Response time",
+    "visit.page.meta.2.v": "Within 24 hours",
+    "visit.address.title": "Address",
+    "visit.address.text": "Kraftwerk Lab<br />Werkstrasse 12<br />20097 Hamburg<br />Germany",
+    "visit.address.note": "Fictional address for this demo project. No studio exists at this location.",
+    "visit.hours.title": "Opening hours",
+    "visit.hours.week": "Mon–Fri",
+    "visit.hours.sat": "Sat",
+    "visit.hours.sun": "Sun",
+    "visit.hours.sunValue": "Closed",
+    "visit.hours.coach": "Coaching",
+    "visit.contact.title": "Contact",
+    "visit.contact.text": "Write to us if you have a question about technique, coaching or recovery. A person answers, not an autoresponder.",
+    "visit.contact.note": "Demo contact details. No real phone numbers or inboxes.",
+    "visit.faq.index": "Questions / 06",
+    "visit.faq.title": "Frequent questions.",
+    "visit.faq.lede": "The six questions we hear most in a first conversation — answered briefly and without marketing.",
+    "visit.faq.0.q": "Do I need experience?",
+    "visit.faq.0.a": "No. The baseline assessment starts at your current level. Technique is built before load, whether it is your first session or your tenth year.",
+    "visit.faq.1.q": "How long is a session?",
+    "visit.faq.1.a": "Classes run 45 to 60 minutes. One-to-one sessions with a technique check take 60 to 75 minutes. Warm-up time is always included.",
+    "visit.faq.2.q": "Can I cancel monthly?",
+    "visit.faq.2.a": "In this concept, yes: monthly billing can be cancelled monthly, annual billing runs twelve months with a 15 percent discount. All prices are demo figures without contractual effect.",
+    "visit.faq.3.q": "Are there showers and changing rooms?",
+    "visit.faq.3.a": "Yes, including lockers, towel service and a quiet corner. The recovery suite is included in the Performance and Elite tiers.",
+    "visit.faq.4.q": "How is progress measured?",
+    "visit.faq.4.a": "Every sixth week with the same test: strength, movement quality, endurance and perceived effort. You receive the values in writing and in a comparable format.",
+    "visit.faq.5.q": "Is this a real studio?",
+    "visit.faq.5.a": "No. Kraftwerk Lab is a fictional brand and a design and coding demo. Address, team, prices and schedule are illustrative.",
+    "visit.cta.title": "One appointment. One coach. One honest answer.",
+    "visit.cta.text": "The demo form shows the full flow — including validation and a local success state."
+  },
+  "de": {
+    "page.navLabel": "Studio-Seiten",
+    "page.groupLabel": "Seite wählen",
+    "page.bar": "Das Labor erkunden",
+    "page.home": "Übersicht",
+    "page.coaches": "Trainer",
+    "page.facility": "Studio",
+    "page.programs": "Programme",
+    "page.visit": "Besuch",
+    "page.backHome": "Zurück zur Übersicht",
+    "page.nextFacility": "Weiter: Das Studio",
+    "page.backCoaches": "Zurück: Trainerteam",
+    "page.nextPrograms": "Weiter: Programme",
+    "page.backFacility": "Zurück: Das Studio",
+    "page.nextVisit": "Weiter: Besuch",
+    "page.backPrograms": "Zurück: Programme",
+    "cta.profile": "Profil ansehen",
+    "cta.allCoaches": "Alle acht Trainer ansehen",
+    "cta.facility": "Studio-Rundgang ansehen",
+    "cta.visit": "Besuch planen",
+    "coaches.lede": "Vier Spezialisten im Überblick, acht im Team — mit klaren Zuständigkeiten für Technik, Laststeuerung und Regeneration.",
+    "coaches.note": "Fiktive, illustrative Trainerprofile für dieses Demo-Projekt. Keine realen Personen, keine echten Anstellungen.",
+    "gallery.index": "06 / Im Labor",
+    "gallery.title": "Im Labor.",
+    "gallery.lede": "Trainingsflächen, kalibrierter Stahl und die stillen Räume dahinter. Ein erster Blick auf die Räume — der ganze Rundgang hat eine eigene Seite.",
+    "gallery.cap.0": "Kraftfläche · Technikprüfung",
+    "gallery.cap.1": "Aylin Demir · Boxstudio",
+    "gallery.cap.2": "Kondition & Messwerte",
+    "gallery.cap.3": "Sora Takahashi · Rig & Ringe",
+    "gallery.note": "Konzeptbilder für diese Demo. Die Studio-Seite zeigt jede Zone, ihre Ausstattung und den Regenerationsbereich.",
+    "voices.index": "07 / Mitglieder",
+    "voices.title": "Menschen, keine Mitgliedsnummern.",
+    "voices.lede": "Drei Stimmen von der Fläche. Was sich verändert, ist selten das Gewicht — es ist die Art, wie eine Woche geplant wird.",
+    "voices.0.quote": "Ich rate nicht mehr. Jeder Block hat eine Zahl, die ich treffen muss — und einen Trainer, der prüft, ob ich sie getroffen habe.",
+    "voices.0.meta": "Mitglied seit 2023 · Kraftschwerpunkt",
+    "voices.1.quote": "Das erste Studio, in dem das Aufwärmen so sorgfältig geplant ist wie der Hauptsatz. Meine Schultern machen endlich mit.",
+    "voices.1.meta": "Mitglied seit 2024 · Beweglichkeit & Regeneration",
+    "voices.2.quote": "Zwei Einheiten pro Woche, alle sechs Wochen gemessen. Weniger Zeit im Studio als früher — und schneller als je zuvor.",
+    "voices.2.meta": "Mitglied seit 2022 · Sprintmechanik",
+    "coaches.page.eyebrow": "02 / Das Trainerteam",
+    "coaches.page.title": "Acht Spezialisten.<br />Ein Standard.",
+    "coaches.page.lede": "Jede Einheit hat eine verantwortliche Person, ein Ziel und einen Messpunkt. Lerne das Team kennen, das die Woche im Labor plant — von der ersten Technikprüfung bis zur letzten Regenerationseinheit.",
+    "coaches.page.meta.0.k": "Team",
+    "coaches.page.meta.0.v": "8 Trainer",
+    "coaches.page.meta.1.k": "Disziplinen",
+    "coaches.page.meta.1.v": "Kraft, Ausdauer, Boxen, Beweglichkeit",
+    "coaches.page.meta.2.k": "Betreuung",
+    "coaches.page.meta.2.v": "1:1 oder Kleingruppe",
+    "coaches.page.stat.0": "Spezialisten im Team",
+    "coaches.page.stat.1": "Betreute Einheiten pro Woche",
+    "coaches.page.stat.2": "Standard für Technikprüfungen",
+    "roster.index": "Team / 2026",
+    "roster.title": "Wer dich coacht.",
+    "roster.lede": "Acht Profile mit klaren Zuständigkeiten. Jede Person verantwortet einen Schwerpunkt, prüft Technik und dokumentiert Fortschritt — damit niemand raten muss.",
+    "roster.note": "Fiktive Profile und konzeptionelle Bilder für dieses Demo-Projekt. Verfügbarkeiten und Qualifikationen sind illustrativ.",
+    "roster.cred": "Qualifikation",
+    "roster.days": "Vor Ort",
+    "roster.langs": "Sprachen",
+    "standards.index": "Standard / 04",
+    "standards.title": "Wie wir coachen.",
+    "standards.lede": "Vier Regeln, die für jede Einheit gelten — unabhängig davon, wer vorne steht.",
+    "standards.0.title": "Erst messen",
+    "standards.0.text": "Kein Satz ohne Ausgangswert. Technik, Bewegungsweg und Last werden vor dem ersten Arbeitssatz dokumentiert.",
+    "standards.1.title": "Dann reduzieren",
+    "standards.1.text": "Wir streichen lieber eine Übung als eine saubere Wiederholung. Qualität ist die einzige Währung im Labor.",
+    "standards.2.title": "Sichtbar machen",
+    "standards.2.text": "Jede sechste Woche prüfen wir denselben Test. Fortschritt ist eine Zahl, kein Gefühl.",
+    "standards.3.title": "Zurückgeben",
+    "standards.3.text": "Nach jeder Einheit bekommst du eine kurze Einordnung: was funktioniert hat und was als Nächstes kommt.",
+    "trainer.0.role": "Cheftrainerin · Kraft & olympisches Gewichtheben",
+    "trainer.0.bio": "Lena baut den Kraftblock ab der ersten Standortbestimmung auf. Sie prüft Aufbau, Hantelweg und Last — und beendet einen Satz, bevor er zum Raten wird.",
+    "trainer.0.cred": "MSc Sportwissenschaft · 12 Jahre Training · Gewichtheben auf nationaler Ebene",
+    "trainer.0.days": "Mo–Fr · 07:00–15:00",
+    "trainer.0.langs": "Deutsch, Englisch",
+    "trainer.1.role": "Kraftdreikampf & Biomechanik",
+    "trainer.1.bio": "Henrik liest die Bewegung, bevor Last dazukommt. Seine Einheiten sind leise, präzise und auf Positionen gebaut, die du unter Last wiederholen kannst.",
+    "trainer.1.tag.0": "Kraftdreikampf",
+    "trainer.1.tag.1": "Maximalkraft",
+    "trainer.1.tag.2": "Bewegungsanalyse",
+    "trainer.1.cred": "Zertifizierter Kraftdreikampf-Trainer · Bewegungsanalyse · 14 Jahre",
+    "trainer.1.days": "Mo, Mi, Fr · 12:00–20:00",
+    "trainer.1.langs": "Deutsch, Englisch",
+    "trainer.2.role": "Leistung & Kondition",
+    "trainer.2.bio": "Matteo steuert Intensität, Tempo und Erholung. Kein Intervall ohne Zielwert, kein Block ohne Vergleichswert.",
+    "trainer.2.cred": "Ausdauertrainer · Laktatdiagnostik · 9 Jahre",
+    "trainer.2.days": "Di–Fr · 06:30–14:30",
+    "trainer.2.langs": "Deutsch, Englisch, Italienisch",
+    "trainer.3.role": "Boxen & Intervalle",
+    "trainer.3.bio": "Aylin trainiert Distanz, Winkel und Rhythmus. Jede Runde hat eine Aufgabe; Fußarbeit und kontrollierte Härte kommen vor dem Tempo.",
+    "trainer.3.cred": "Amateur-Boxtrainerin · Kondition · 8 Jahre",
+    "trainer.3.days": "Di, Do, Sa · 16:00–21:00",
+    "trainer.3.langs": "Deutsch, Englisch, Türkisch",
+    "trainer.4.role": "Beweglichkeit, Yoga & Regeneration",
+    "trainer.4.bio": "Rosa behandelt Bewegungsraum als trainierbare Eigenschaft. Mobilität, Atmung und Regeneration werden ein Protokoll statt drei getrennter Gewohnheiten.",
+    "trainer.4.cred": "Yoga-Lehrerin · Mobilitätsanalyse · 11 Jahre",
+    "trainer.4.days": "Mi–So · 08:00–16:00",
+    "trainer.4.langs": "Deutsch, Englisch, Schwedisch",
+    "trainer.5.role": "Sprintmechanik & athletische Leistung",
+    "trainer.5.bio": "Marcus trainiert Schnelligkeit als Fertigkeit. Sprinttechnik, Schlittenarbeit und Beschleunigungsblöcke werden auf die Hundertstelsekunde gemessen.",
+    "trainer.5.tag.0": "Sprintmechanik",
+    "trainer.5.tag.1": "Beschleunigung",
+    "trainer.5.tag.2": "Schlittenarbeit",
+    "trainer.5.cred": "Sprinter & Leichtathletik-Trainer · Zeitmesssysteme · 11 Jahre",
+    "trainer.5.days": "Mo–Do · 08:00–16:00",
+    "trainer.5.langs": "Englisch, Deutsch",
+    "trainer.6.role": "Calisthenics & Ringe",
+    "trainer.6.bio": "Sora baut Kontrolle vor Umfang. Ringe, Schlingen und Körpergewichts-Progressionen werden mit derselben Präzision geplant wie Hantelarbeit.",
+    "trainer.6.tag.0": "Calisthenics",
+    "trainer.6.tag.1": "Turnringe",
+    "trainer.6.tag.2": "Körperkraft",
+    "trainer.6.cred": "Turn-Trainerin · Calisthenics Level 3 · 9 Jahre",
+    "trainer.6.days": "Di, Do · 10:00–18:00",
+    "trainer.6.langs": "Deutsch, Englisch, Japanisch",
+    "trainer.7.role": "Physiotherapie & Neuro-Regeneration",
+    "trainer.7.bio": "Clara verbindet Behandlung und Training. Sie prüft Gelenke, schreibt Pläne für den Wiedereinstieg und betreut den Regenerationsbereich.",
+    "trainer.7.tag.0": "Physiotherapie",
+    "trainer.7.tag.1": "Wiedereinstieg",
+    "trainer.7.tag.2": "Atemarbeit",
+    "trainer.7.cred": "Staatlich geprüfte Physiotherapeutin · Sportreha · 10 Jahre",
+    "trainer.7.days": "Di–Sa · 09:00–17:00",
+    "trainer.7.langs": "Deutsch, Englisch",
+    "facility.page.eyebrow": "03 / Das Studio",
+    "facility.page.title": "1.240 m².<br />Fünf Zonen.",
+    "facility.page.lede": "Ein Grundriss, der Training erzwingt statt es zu dekorieren: kalibrierte Kraftflächen, eine Sprintbahn, ein Diagnostiklabor und Räume, in denen Regeneration als Arbeit gilt.",
+    "facility.page.meta.0.k": "Fläche",
+    "facility.page.meta.0.v": "1.240 m² auf einer Ebene",
+    "facility.page.meta.1.k": "Zonen",
+    "facility.page.meta.1.v": "Kraft · Ausdauer · Funktionell · Regeneration · Studio",
+    "facility.page.meta.2.k": "Zugang",
+    "facility.page.meta.2.v": "Mo–So · 06:00–23:00",
+    "facility.hero.cap": "Kraftfläche · Technikprüfung am Kraftständer",
+    "facility.hero.tag": "Ebene 01",
+    "facility.zones.index": "Rundgang / 05",
+    "facility.zones.title": "Der Rundgang.",
+    "facility.zones.lede": "Fünf Bereiche, ein Weg. Vom ersten Messwert bis zur letzten ruhigen Minute ist alles zu Fuß erreichbar.",
+    "facility.zones.label": "Trainingszonen",
+    "facility.zone.strength": "Zwölf kalibrierte Kraftständer, acht Plattformen, Wettkampfhanteln und ein separater Bereich für Zug- und Druckmuster.",
+    "facility.zone.cardio": "Sprintbahn, Air Bikes und Rudergeräte mit Leistungsmessung — aufgebaut für Intervalle mit klaren Zielwerten.",
+    "facility.zone.functional": "Rig mit Ringen und Schlingen, Schlittenbahnen und offene Fläche für komplexe Bewegungen.",
+    "facility.zone.recovery": "Sauna, Kaltbecken, Atemraum und Behandlungsbank — der leiseste Teil des Studios.",
+    "facility.zone.studio": "Gedämpftes Licht, warmer Boden, 60 m² für Technik, Yoga und geführte Einheiten.",
+    "facility.gallery.index": "Einblicke / 04",
+    "facility.gallery.title": "Flächen und Räume.",
+    "facility.gallery.cap.0": "Diagnostik & Intervallsteuerung",
+    "facility.gallery.cap.1": "Regeneration & Kaltbecken",
+    "facility.gallery.cap.2": "Rig, Ringe und freie Fläche",
+    "facility.gallery.cap.3": "Studio für Technik und Beweglichkeit",
+    "facility.gallery.cap.strength": "Kraftfläche · Plattform- und Ständerlinie",
+    "facility.gallery.plan": "Plan",
+    "facility.specs.index": "Daten / Studio",
+    "facility.specs.title": "Ausstattung.",
+    "facility.specs.lede": "Konzeptdaten für dieses Demo-Projekt. Sie beschreiben den gedachten Standort, nicht ein geprüftes Bauvorhaben.",
+    "facility.spec.area.k": "Gesamtfläche",
+    "facility.spec.area.v": "1.240 m² auf einer Ebene, ohne Stufen zwischen den Zonen",
+    "facility.spec.racks.k": "Kraftständer",
+    "facility.spec.racks.v": "12 kalibrierte Ständer, 8 Plattformen, 24 Hanteln",
+    "facility.spec.cardio.k": "Ausdauer",
+    "facility.spec.cardio.v": "40 m Sprintbahn, 6 Air Bikes, 4 Rudergeräte mit Leistungsmessung",
+    "facility.spec.lab.k": "Diagnostik",
+    "facility.spec.lab.v": "Kraftmessplatten, Laktat- und Atemgastest, Videoanalyse in zwei Ebenen",
+    "facility.spec.recovery.k": "Regeneration",
+    "facility.spec.recovery.v": "Sauna für 10, zwei Kaltbecken, Atemraum, zwei Behandlungsbanken",
+    "facility.spec.capacity.k": "Kapazität",
+    "facility.spec.capacity.v": "Maximal 28 Personen gleichzeitig, Kurse mit 12 bis 18 Plätzen",
+    "programs.page.eyebrow": "04 / Programme & Methode",
+    "programs.page.title": "Ein Block.<br />Vier Phasen.",
+    "programs.page.lede": "Wir planen in Blöcken von sechs Wochen. Jeder Block beginnt mit einem Test und endet mit demselben Test. Dazwischen liegt Arbeit, die sich an deinen Werten orientiert — nicht an einem fertigen Plan von der Stange.",
+    "programs.page.meta.0.k": "Blocklänge",
+    "programs.page.meta.0.v": "6 Wochen · 2 Prüfungen",
+    "programs.page.meta.1.k": "Einheiten",
+    "programs.page.meta.1.v": "2 bis 4 pro Woche",
+    "programs.page.meta.2.k": "Start",
+    "programs.page.meta.2.v": "Jederzeit nach der Standortbestimmung",
+    "programs.page.stat.0": "Wochen pro Block",
+    "programs.page.stat.1": "Phasen pro Block",
+    "programs.page.stat.2": "Messwerte pro Prüfung",
+    "programs.phases.index": "Methode / 04",
+    "programs.phases.title": "Der Block im Detail.",
+    "programs.phases.lede": "Vier Phasen, die aufeinander aufbauen. Die Last steigt, der Umfang sinkt — und am Ende steht ein Wert, der vorher nicht da war.",
+    "programs.phase.0.title": "Standort",
+    "programs.phase.0.meta": "Woche 1 · Test & Technik",
+    "programs.phase.0.text": "Kraft, Bewegungsweg und Ausdauer werden gemessen. Du bekommst einen Ausgangswert für jede Übung, die im Block vorkommt.",
+    "programs.phase.1.title": "Aufbau",
+    "programs.phase.1.meta": "Woche 2–3 · Volumen",
+    "programs.phase.1.text": "Mehr saubere Wiederholungen bei kontrollierter Last. Technikstandards bleiben unverändert, die Pausen werden kürzer.",
+    "programs.phase.2.title": "Intensität",
+    "programs.phase.2.meta": "Woche 4–5 · Last",
+    "programs.phase.2.text": "Weniger Umfang, mehr Last. Jeder Arbeitssatz hat ein Ziel und ein Abbruchkriterium — beides wird dokumentiert.",
+    "programs.phase.3.title": "Prüfung",
+    "programs.phase.3.meta": "Woche 6 · Retest",
+    "programs.phase.3.text": "Derselbe Test wie in Woche 1, gleiche Bedingungen. Danach entscheiden wir gemeinsam über den nächsten Block.",
+    "programs.week.index": "Beispielwoche",
+    "programs.week.title": "Eine Woche im Labor.",
+    "programs.week.lede": "Beispielhafter Aufbau für einen Kraftschwerpunkt. Deine Woche wird nach der Standortbestimmung angepasst.",
+    "programs.week.0.focus": "Kraft · Unterkörper",
+    "programs.week.0.note": "Kniebeuge 5×4 · Zubehör 3 Sätze · 70 Minuten",
+    "programs.week.1.focus": "Regeneration · Mobilität",
+    "programs.week.1.note": "Geführter Flow · Atemprotokoll · 40 Minuten",
+    "programs.week.2.focus": "Kraft · Oberkörper",
+    "programs.week.2.note": "Bankdrücken 5×4 · Zugmuster 3 Sätze · 70 Minuten",
+    "programs.week.3.focus": "Ausdauer · Zone 2",
+    "programs.week.3.note": "40 Minuten gleichmäßig · Laktatkontrolle optional",
+    "programs.week.4.focus": "Kraft · Ganzkörper",
+    "programs.week.4.note": "Kreuzheben 4×3 · Rumpf · 60 Minuten",
+    "programs.week.5.focus": "Freiwillig · Boxen oder Studio",
+    "programs.week.5.note": "Technik oder Bewegungsfluss · 45 Minuten",
+    "programs.week.6.focus": "Geschlossen",
+    "programs.week.6.note": "Ruhetag · keine Einheiten, keine Kurse",
+    "programs.cta.title": "Starte mit einem Test, nicht mit einem Vertrag.",
+    "programs.cta.text": "Die Standortbestimmung dauert 60 Minuten und endet mit einem Plan, den du behalten kannst.",
+    "visit.page.eyebrow": "05 / Besuch",
+    "visit.page.title": "Komm vorbei.<br />Dann reden wir.",
+    "visit.page.lede": "Ein Termin, ein Rundgang, ein ehrliches Gespräch. Kein Verkaufsgespräch, keine Verpflichtung — nur ein erster Satz und ein Blick auf die Zahlen.",
+    "visit.page.meta.0.k": "Ort",
+    "visit.page.meta.0.v": "Kraftwerk Lab · Demo-Standort",
+    "visit.page.meta.1.k": "Erreichbar",
+    "visit.page.meta.1.v": "ÖPNV · Fahrrad · Parkhaus",
+    "visit.page.meta.2.k": "Antwortzeit",
+    "visit.page.meta.2.v": "Innerhalb von 24 Stunden",
+    "visit.address.title": "Adresse",
+    "visit.address.text": "Kraftwerk Lab<br />Werkstraße 12<br />20097 Hamburg<br />Deutschland",
+    "visit.address.note": "Fiktive Adresse für dieses Demo-Projekt. Es existiert kein Studio an diesem Ort.",
+    "visit.hours.title": "Öffnungszeiten",
+    "visit.hours.week": "Mo–Fr",
+    "visit.hours.sat": "Sa",
+    "visit.hours.sun": "So",
+    "visit.hours.sunValue": "Geschlossen",
+    "visit.hours.coach": "Coaching",
+    "visit.contact.title": "Kontakt",
+    "visit.contact.text": "Schreib uns, wenn du eine Frage zu Technik, Betreuung oder Regeneration hast. Wir antworten persönlich, nicht per Autopilot.",
+    "visit.contact.note": "Demo-Kontaktangaben, keine echten Rufnummern oder Postfächer.",
+    "visit.faq.index": "Fragen / 06",
+    "visit.faq.title": "Häufige Fragen.",
+    "visit.faq.lede": "Die sechs Fragen, die im ersten Gespräch am häufigsten kommen — kurz und ohne Marketing beantwortet.",
+    "visit.faq.0.q": "Brauche ich Vorerfahrung?",
+    "visit.faq.0.a": "Nein. Die Standortbestimmung startet bei deinem aktuellen Niveau. Technik wird vor Last aufgebaut, unabhängig davon, ob du zum ersten Mal oder seit zehn Jahren trainierst.",
+    "visit.faq.1.q": "Wie lange dauert eine Einheit?",
+    "visit.faq.1.a": "Kurse laufen 45 bis 60 Minuten. Einzeltermine mit Technikprüfung dauern 60 bis 75 Minuten. Die Zeit für Aufwärmen ist immer enthalten.",
+    "visit.faq.2.q": "Kann ich monatlich kündigen?",
+    "visit.faq.2.a": "In diesem Konzept ja: monatliche Zahlung ist monatlich kündbar, jährliche Zahlung läuft zwölf Monate mit 15 Prozent Nachlass. Alle Preise sind Demo-Werte ohne Vertragswirkung.",
+    "visit.faq.3.q": "Gibt es Duschen und Umkleiden?",
+    "visit.faq.3.a": "Ja, inklusive Schließfächern, Handtuchservice und einer kleinen Ruhezone. Die Regenerationsräume sind in der Leistungs- und Elite-Mitgliedschaft enthalten.",
+    "visit.faq.4.q": "Wie werden Fortschritte gemessen?",
+    "visit.faq.4.a": "Jede sechste Woche mit demselben Test: Kraft, Bewegungsweg, Ausdauer und subjektive Belastung. Du bekommst die Werte schriftlich und vergleichbar.",
+    "visit.faq.5.q": "Ist die Seite ein echtes Studio?",
+    "visit.faq.5.a": "Nein. Kraftwerk Lab ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Adresse, Team, Preise und Kursplan sind illustrativ.",
+    "visit.cta.title": "Ein Termin. Ein Trainer. Eine ehrliche Antwort.",
+    "visit.cta.text": "Das Demo-Formular zeigt den kompletten Ablauf — inklusive Validierung und lokalem Erfolgszustand."
+  }
+  };
+  Object.keys(I18N_EXTRA).forEach(function (lang) {
+    if (!I18N[lang]) return;
+    Object.keys(I18N_EXTRA[lang]).forEach(function (key) { I18N[lang][key] = I18N_EXTRA[lang][key]; });
+  });
+
   var LANGUAGE_KEY = 'kw.language.v1';
   var currentLanguage = (function () {
     var saved = store(LANGUAGE_KEY);
@@ -2850,42 +4240,40 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     if (!host) return;
     host.innerHTML = CONFIG.coaches.map(function (c, i) {
       var id = 'c' + i;
-      var art = c.art;
-      var svg =
-        '<svg viewBox="0 0 320 380" preserveAspectRatio="xMidYMid slice" role="presentation">' +
-          '<defs>' +
-            '<clipPath id="' + id + 'clip">' +
-              '<ellipse cx="160" cy="126" rx="' + (art.head + 4) + '" ry="' + (art.head + 12) + '"/>' +
-              '<path d="M' + (160 - art.shoulder) + ' 380c4-98 46-140 ' + art.shoulder + '-140s' + (art.shoulder - 4) + ' 42 ' + art.shoulder + ' 140z"/>' +
-            '</clipPath>' +
-            '<pattern id="' + id + 'grid" width="14" height="14" patternUnits="userSpaceOnUse">' +
-              '<path d="M14 0H0v14" fill="none" stroke="#C8FF3D" stroke-opacity=".10" stroke-width=".7"/>' +
-            '</pattern>' +
-          '</defs>' +
-          '<rect width="320" height="380" fill="#0C0E0D"/>' +
-          '<rect width="320" height="380" fill="url(#' + id + 'grid)"/>' +
-          '<g clip-path="url(#' + id + 'clip)" transform="rotate(' + art.tilt + ' 160 200)">' +
-            '<rect width="320" height="380" fill="#3E4A12"/>' +
-            '<rect width="150" height="380" fill="#C8FF3D" opacity="' + art.accent + '"/>' +
-            '<g opacity=".3">' +
-              '<path d="M0 20h320M0 44h320M0 68h320M0 92h320M0 116h320M0 140h320M0 164h320M0 188h320M0 212h320M0 236h320M0 260h320M0 284h320M0 308h320M0 332h320M0 356h320" stroke="#111312" stroke-width="3"/>' +
-            '</g>' +
-            '<path d="M-40 380 190 -20 260 -20 30 380z" fill="#E4FF7A" opacity=".18"/>' +
-          '</g>' +
-          '<g fill="none" stroke="#C8FF3D" stroke-opacity=".5">' +
-            '<ellipse cx="160" cy="126" rx="' + (art.head + 4) + '" ry="' + (art.head + 12) + '"/>' +
-          '</g>' +
-          '<circle cx="160" cy="126" r="3" fill="#C8FF3D"/>' +
-          '<path d="M20 340h44" stroke="#C8FF3D" stroke-width="1"/>' +
-        '</svg>';
       return '<article class="coach" tabindex="0" aria-labelledby="' + id + '-name ' + id + '-spec">' +
-        '<div class="coach__art">' + svg + '</div>' +
+        '<div class="coach__art"><img src="' + c.photo + '" alt="" width="1024" height="1536" loading="lazy" decoding="async" /></div>' +
         '<div class="coach__body">' +
           '<p class="coach__idx">0' + (i + 1) + '</p>' +
           '<h3 class="coach__name" id="' + id + '-name">' + c.name + '</h3>' +
           '<p class="coach__spec" id="' + id + '-spec" data-i18n="' + c.spec + '">' + translate(c.spec) + '</p>' +
           '<p class="coach__desc" data-i18n="' + c.desc + '">' + translate(c.desc) + '</p>' +
           '<div class="coach__more"><div><ul>' + c.more.map(function (m) { return '<li data-i18n="' + m + '">' + translate(m) + '</li>'; }).join('') + '</ul></div></div>' +
+          '<a class="coach__cta" href="#page-coaches" data-page-link="coaches">' + copySpan('cta.profile') + '</a>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+  }
+
+  function renderTrainers() {
+    var host = $('#rosterGrid');
+    if (!host) return;
+    host.innerHTML = CONFIG.trainers.map(function (c, i) {
+      var id = 't' + i;
+      return '<article class="trainer" aria-labelledby="' + id + '-name">' +
+        '<div class="trainer__photo">' +
+          '<span class="trainer__num">0' + (i + 1) + '</span>' +
+          '<img src="' + c.photo + '" alt="" width="1024" height="1536" loading="lazy" decoding="async" />' +
+        '</div>' +
+        '<div class="trainer__body">' +
+          '<p class="trainer__role" data-i18n="' + c.role + '">' + translate(c.role) + '</p>' +
+          '<h3 class="trainer__name" id="' + id + '-name">' + c.name + '</h3>' +
+          '<p class="trainer__bio" data-i18n="' + c.bio + '">' + translate(c.bio) + '</p>' +
+          '<ul class="trainer__tags">' + c.tags.map(function (t) { return '<li class="trainer__tag" data-i18n="' + t + '">' + translate(t) + '</li>'; }).join('') + '</ul>' +
+          '<dl class="trainer__facts">' +
+            '<div><dt data-i18n="roster.cred">' + translate('roster.cred') + '</dt><dd data-i18n="' + c.cred + '">' + translate(c.cred) + '</dd></div>' +
+            '<div><dt data-i18n="roster.days">' + translate('roster.days') + '</dt><dd data-i18n="' + c.days + '">' + translate(c.days) + '</dd></div>' +
+            '<div><dt data-i18n="roster.langs">' + translate('roster.langs') + '</dt><dd data-i18n="' + c.langs + '">' + translate(c.langs) + '</dd></div>' +
+          '</dl>' +
         '</div>' +
       '</article>';
     }).join('');
@@ -2988,6 +4376,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     renderHeroCopy();
     renderSchedule();
     renderCoaches();
+    renderTrainers();
     renderStats();
     renderPlans();
     renderFormAreas();
@@ -4171,7 +5560,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     var unavailable = !AC, initialized = false, disposed = false;
     var voices = new Set(), bed = [], pulseTimer = null;
     var MAX_VOICES = 32, nextPulse = 0, pulseCount = 0, interactionCount = 0;
-    var hoverAt = -Infinity, step = 0, lastInteraction = null;
+    var hoverAt = -Infinity, step = 0, lastInteraction = null, helpTimer = null;
     var bpm = CONFIG.hero.hud.bpmBase;
 
     function status() {
@@ -4196,9 +5585,15 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       if (label) label.textContent = translate(labelKey);
       var help = $('#soundHelp');
       if (help) {
-        var show = state === 'ready' && !document.hidden;
+        var show = state === 'ready' && !document.hidden && !document.body.classList.contains('sound-used');
         help.classList.toggle('is-visible', show);
         help.setAttribute('aria-hidden', String(!show));
+        if (show && !helpTimer) {
+          helpTimer = setTimeout(function () {
+            help.classList.remove('is-visible');
+            help.setAttribute('aria-hidden', 'true');
+          }, 7000);
+        }
       }
       var live = $('#soundStatus');
       var message = translate(state === 'ready' ? 'sound.hint' : (state === 'running' ? 'sound.playing' : (state === 'muted' ? 'sound.muted' : 'sound.unavailable')));
@@ -4425,6 +5820,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       });
       function playInteraction(event, kind) {
         if (event.button !== 0 || event.isPrimary === false || !enabled || event.target.closest('#soundBtn, [disabled]')) return;
+        document.body.classList.add('sound-used');
         var point = pointOf(event);
         activate().then(function (ok) { if (ok) beat(point, kind); });
       }
@@ -4600,19 +5996,111 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     document.addEventListener('click', function (e) {
       var a = e.target.closest('a[href^="#"]');
       if (!a) return;
+      if (a.hasAttribute('data-page-link') || a.hasAttribute('data-goto-home')) return;
       var id = a.getAttribute('href');
       if (!id || id === '#') return;
       var target = id === '#top' ? document.body : document.querySelector(id);
       if (!target) return;
+      /* a section inside a hidden page view: switch first, then scroll */
+      var owner = target.closest ? target.closest('[data-page-view]') : null;
+      if (owner && owner.hidden) setPage(owner.getAttribute('data-page-view'), { keepScroll: true, updateHash: false });
       e.preventDefault();
       if (menuBtn && menuBtn.getAttribute('aria-expanded') === 'true') setMenu(false);
       if (id === '#top') {
         if (window.__kwScrollTo) window.__kwScrollTo(0); else window.scrollTo(0, 0);
       } else {
-        Scroll.toEl(target, 76);
+        Scroll.toEl(target, document.body.getAttribute('data-page') && document.body.getAttribute('data-page') !== 'home' ? 150 : 96);
         if (a.classList.contains('skip-link')) target.focus({ preventScroll: true });
       }
       if (history.replaceState) history.replaceState(null, '', id);
+    });
+  }
+
+  /* ======================================================================
+     PAGE CONTROLLER — five navigable views inside one document
+     ====================================================================== */
+  var PAGES = ['home', 'coaches', 'facility', 'programs', 'visit'];
+  var currentPage = 'home';
+
+  function setPage(page, options) {
+    options = options || {};
+    if (PAGES.indexOf(page) < 0) page = 'home';
+    var views = $$('[data-page-view]');
+    if (!views.length) return false;
+    currentPage = page;
+    views.forEach(function (view) {
+      var isTarget = view.getAttribute('data-page-view') === page;
+      view.hidden = !isTarget;
+      view.classList.toggle('is-entering', isTarget);
+    });
+    document.body.setAttribute('data-page', page);
+    $$('[data-page-tab]').forEach(function (tab) {
+      tab.setAttribute('aria-pressed', String(tab.getAttribute('data-page-tab') === page));
+    });
+    if (window.ScrollTrigger) {
+      requestAnimationFrame(function () {
+        ScrollTrigger.refresh();
+        window.setTimeout(function () { ScrollTrigger.refresh(); }, 260);
+      });
+    }
+    if (!options.keepScroll) {
+      if (window.__kwScrollTo) window.__kwScrollTo(0, { immediate: true });
+      else window.scrollTo(0, 0);
+    }
+    var active = document.querySelector('[data-page-view="' + page + '"]');
+    if (options.focusHeading && active) {
+      var heading = active.querySelector('h1, h2');
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+      }
+    }
+    if (options.updateHash !== false && history.replaceState) {
+      try { history.replaceState(null, '', page === 'home' ? '#' : '#page-' + page); } catch (err) { /* file: URLs */ }
+    }
+    window.dispatchEvent(new CustomEvent('kw:page-change', { detail: { page: page } }));
+    return true;
+  }
+
+  function initPages() {
+    if (!$$('[data-page-view]').length) return;
+    /* capture phase: page links must win over the in-page anchor handler */
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('[data-page-link]');
+      if (link) {
+        event.preventDefault();
+        event.stopPropagation();
+        setPage(link.getAttribute('data-page-link'), { focusHeading: link.getAttribute('data-focus') !== 'false' });
+        return;
+      }
+      var tab = event.target.closest('[data-page-tab]');
+      if (tab) {
+        event.preventDefault();
+        setPage(tab.getAttribute('data-page-tab'), { focusHeading: true });
+        return;
+      }
+      var goto = event.target.closest('[data-goto-home]');
+      if (goto) {
+        event.preventDefault();
+        event.stopPropagation();
+        setPage('home', { keepScroll: true, updateHash: false });
+        var targetId = goto.getAttribute('data-goto-home');
+        requestAnimationFrame(function () {
+          var target = document.getElementById(targetId);
+          if (target && Scroll) Scroll.toEl(target, 96);
+        });
+      }
+    }, true);
+
+    var hash = (location.hash || '').replace('#', '');
+    if (hash.indexOf('page-') === 0 && PAGES.indexOf(hash.slice(5)) >= 0) {
+      setPage(hash.slice(5), { keepScroll: true, updateHash: false });
+    }
+    window.addEventListener('hashchange', function () {
+      var next = (location.hash || '').replace('#', '');
+      if (next.indexOf('page-') !== 0) return;
+      var page = next.slice(5);
+      if (PAGES.indexOf(page) >= 0 && page !== currentPage) setPage(page, { keepScroll: true, updateHash: false });
     });
   }
 
@@ -4622,7 +6110,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     var valueEl = $('#meterVal');
     var fill = $('#meterFill');
     if (!host) return;
-    var ids = ['identity', 'manifest', 'zones', 'schedule', 'coaches', 'numbers', 'membership', 'probetraining', 'footer'];
+    var ids = ['identity', 'manifest', 'zones', 'schedule', 'coaches', 'numbers', 'lab-gallery', 'membership', 'voices', 'probetraining', 'footer'];
     var levels = ids.length;
     var plates = [];
     for (var i = 0; i < levels; i++) {
@@ -5219,7 +6707,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
         scrollTrigger: { trigger: '.footer', start: 'top bottom', end: 'bottom bottom', scrub: true }
       });
       if (!isReduced()) {
-        $$('.sec-head, .kit__tile, .coach, .stat, .plan, .form-grid > *').forEach(function (el) {
+        $$('.sec-head, .kit__tile, .coach, .stat, .plan, .form-grid > *, .shot, .voice, .trainer, .phase, .visit-card, .cta-band, .page-hero__title').forEach(function (el) {
           gsap.fromTo(el, { opacity: 0, y: 22 }, {
             opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
             scrollTrigger: { trigger: el, start: 'top 90%', once: true }
@@ -5291,6 +6779,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     });
 
     safe('language', initLanguage);
+    safe('pages', initPages);
     safe('nav', initNav);
     safe('meter', initMeter);
     safe('manifesto', initManifesto);
@@ -5372,6 +6861,8 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     engine: function () { return engine; },
     scroll: Scroll,
     sound: Sound,
+    page: function () { return currentPage; },
+    setPage: function (page, options) { return setPage(page, options); },
     language: {
       get: function () { return currentLanguage; },
       set: function (language) { return applyLanguage(language, true); },

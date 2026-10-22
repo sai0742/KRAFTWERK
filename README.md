@@ -3,8 +3,23 @@
 **KRAFTWERK LAB** — a single-file brand experience (Three.js + GSAP + Lenis).
 
 - Site: `index.html` (all site HTML, CSS and application JS inline; no build step or audio assets).
+- Imagery: `images/trainers/` holds the AI-generated concept portraits used by the coaches page and galleries. All copy, layout and interaction logic still lives in `index.html`.
 - Open it directly (`file://`) or serve it: `python3 -m http.server 8000 --bind 0.0.0.0`.
 - Runtime CDN dependencies: Three.js r128, GSAP 3.12 + ScrollTrigger, Lenis 1.1, Google Fonts (Orbitron / Exo 2 / JetBrains Mono). If animation libraries/WebGL are unavailable, the content, language controls and sound still work.
+
+## Pages
+
+The experience is split into five navigable views inside the same document — the fixed pill bar under the header switches between them, and every view is linked from the header, the footer, in-page CTAs and deep links (`#page-coaches`, `#page-facility`, `#page-programs`, `#page-visit`).
+
+| View | Content |
+| --- | --- |
+| **Overview** (`home`) | Hero/intro, identity kit, manifesto, training zones, schedule, four-coach teaser, numbers, "inside the lab" gallery, membership, member voices, trial form |
+| **Coaches** (`coaches`) | The full eight-person roster with portraits, remits, credentials, floor hours and languages, plus the four coaching standards |
+| **Facility** (`facility`) | Zone-by-zone walkthrough, room gallery and plan diagrams, equipment sheet |
+| **Programs** (`programs`) | The six-week block method, four phases, a sample training week and a CTA back to the trial form |
+| **Visit** (`visit`) | Address, opening hours, contact, six-question FAQ and CTA |
+
+The controller is `setPage()`; anchor links pointing at a section inside a hidden view switch the view first and then scroll. Scroll-linked animations are refreshed on every switch. `window.KWLAB.setPage()` / `window.KWLAB.page()` are exposed for QA.
 
 ## Language
 
@@ -29,6 +44,7 @@ Language, sound and consent storage are best-effort: blocked/unavailable local s
 
 - The trial-session form validates locally and **does not transmit** anything; no appointment is booked and no form contents are saved.
 - Timetable, capacities, coaches, statistics and prices are illustrative demo content.
+- The coach portraits and room imagery are AI-generated concept images, not photographs of real people or real studios; profiles, credentials and hours are fictional (the imprint says so in both languages).
 - Cookie consent stores only the visitor's choice; no analytics/marketing scripts are loaded. Saved cookie settings can be reopened from the footer.
 - Legal panels are translated demo placeholders — operator data, privacy policy and terms require review before going live. They disclose local preferences, generated audio and external CDN/font requests.
 
@@ -46,4 +62,4 @@ Tests serve the static site and intercept the existing CDN requests with the mat
 
 For an existing Chromium installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` when running the tests. The test server binds to `0.0.0.0`; the application uses same-page URLs and does not call a localhost backend.
 
-Debug/integration hooks: `window.KWLAB` exposes `config`, `engine()`, `scroll`, `sound` and `language` (`get()`, `set('en' | 'de')`, `translate(key)`, `keys()`). `sound.inspect()` returns read-only in-memory playback/voice/level diagnostics. `?debug` logs the intro timeline duration.
+Debug/integration hooks: `window.KWLAB` exposes `config`, `engine()`, `scroll`, `sound`, `page()` / `setPage(name)` and `language` (`get()`, `set('en' | 'de')`, `translate(key)`, `keys()`). `sound.inspect()` returns read-only in-memory playback/voice/level diagnostics. `?debug` logs the intro timeline duration.
