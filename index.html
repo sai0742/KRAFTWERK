@@ -550,7 +550,8 @@ body.intro-active .hero__copy{transition:none}
   display:grid;place-items:center;box-shadow:0 16px 40px rgba(0,0,0,.5);
 }
 .kit__appicon .kit__k{width:56%;color:var(--ink)}
-#kit3d{width:100%;height:auto;aspect-ratio:1;max-width:220px;display:block}
+#kit3d{width:100%;height:auto;aspect-ratio:1;max-width:220px;display:block;opacity:0;transition:opacity .5s var(--ease)}
+.kit__stage--3d.is-painted #kit3d{opacity:1}
 .kit__meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .kit__tile--volt .kit__meta,.kit__tile--paper .kit__meta{color:rgba(17,19,18,.6)}
 .kit__tile--volt .kit__meta b,.kit__tile--paper .kit__meta b{color:#111312}
@@ -561,6 +562,19 @@ body.intro-active .hero__copy{transition:none}
   border-bottom:1px solid rgba(200,255,61,.4);padding-bottom:4px;transition:color .2s var(--ease),border-color .2s var(--ease);
 }
 .kit__download:hover{color:var(--volt-hi);border-color:var(--volt-hi)}
+
+/* 3D kit tile: layered silhouette fallback while the WebGL snapshot renders */
+.kit__stage--3d{position:relative}
+.kit__stage--3d .kit__k--front{position:relative;z-index:3}
+.kit__stage--3d .kit__k--layer{
+  position:absolute;left:50%;top:50%;margin:0;pointer-events:none;
+  transform:translate(-50%,-50%) translate(13px,11px);z-index:2;color:#46531B;
+}
+.kit__stage--3d .kit__k--layer2{
+  transform:translate(-50%,-50%) translate(26px,22px);z-index:1;color:#2F3910;
+}
+.kit__stage--3d.is-painted .kit__k--layer,.kit__stage--3d.is-painted .kit__k--front{display:none}
+.kit__stage--3d #kit3d{position:absolute;inset:0;margin:auto;width:100%;max-width:230px;pointer-events:none}
 
 /* colour reference --------------------------------------------------------- */
 .swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1px}
@@ -1682,7 +1696,10 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       </div>
 
       <div class="kit__tile kit__tile--2 kit__tile--olive">
-        <div class="kit__stage">
+        <div class="kit__stage kit__stage--3d">
+          <span class="kmark kit__k kit__k--layer kit__k--layer2" data-kmark aria-hidden="true"></span>
+          <span class="kmark kit__k kit__k--layer" data-kmark aria-hidden="true"></span>
+          <span class="kmark kit__k kit__k--front" data-kmark aria-hidden="true"></span>
           <canvas id="kit3d" width="520" height="520" aria-label="Dreidimensionales K mit geschichteter Oliv-Extrusion" data-i18n-aria-label="kit.canvas" role="img"></canvas>
         </div>
         <div class="kit__meta"><span data-i18n="kit.dimensional">06 / Räumlich</span><b data-i18n="kit.layered">Geschichtetes 3D-K</b></div>
@@ -2485,7 +2502,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
         </div>
         <div class="cta-band__actions">
           <a class="btn btn--volt" href="#probetraining" data-goto-home="probetraining" data-magnetic data-i18n="cta.trial">Kostenloses Probetraining</a>
-          <button class="btn btn--ghost" type="button" data-legal="imprint" data-i18n="legal.imprint">Impressum</button>
+          <a class="btn btn--ghost" href="#membership" data-goto-home="membership" data-i18n="cta.membership">Mitgliedschaft ansehen</a>
         </div>
       </div>
 
@@ -3539,6 +3556,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "page.nextVisit": "Next: visit",
     "page.backPrograms": "Back: programs",
     "cta.profile": "View profile",
+    "cta.membership": "See membership options",
     "cta.allCoaches": "See all eight coaches",
     "cta.facility": "Take the facility tour",
     "cta.visit": "Plan a visit",
@@ -3788,6 +3806,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "page.nextVisit": "Weiter: Besuch",
     "page.backPrograms": "Zurück: Programme",
     "cta.profile": "Profil ansehen",
+    "cta.membership": "Mitgliedschaft ansehen",
     "cta.allCoaches": "Alle acht Trainer ansehen",
     "cta.facility": "Studio-Rundgang ansehen",
     "cta.visit": "Besuch planen",
@@ -5392,6 +5411,8 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       kitGeos.forEach(function (g) { g.dispose(); });
       kitFront.dispose(); kitSide.dispose();
       kitLayerMats.forEach(function (m) { m.dispose(); });
+      var stage = cv.parentElement;
+      if (stage) stage.classList.add('is-painted');
       kitPainted = true;
     }
 

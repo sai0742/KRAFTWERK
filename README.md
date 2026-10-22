@@ -58,7 +58,7 @@ npx playwright install chromium
 npm test
 ```
 
-Tests serve the static site and intercept the existing CDN requests with the matching installed libraries, so no external network is needed during a run. They cover both locales, all marked copy/accessibility attributes, preserved UI state, form errors/success, legal/cookie panels, local storage failures, real audio output, autoplay rejection/retry, mute persistence, spatial interactions, bounded polyphony, background suspension, narrow mobile layouts/touch release and the real 3D intro's skip/replay behavior.
+Tests serve the static site and intercept the existing CDN requests with the matching installed libraries, so no external network is needed during a run. They cover both locales, all marked copy/accessibility attributes, preserved UI state, form errors/success, legal/cookie panels, local storage failures, real audio output, autoplay rejection/retry, mute persistence, spatial interactions, bounded polyphony, background suspension, narrow mobile layouts/touch release, the five page views (switching, deep links, CTAs back to the form), the eight-person roster with real image loading, and the real 3D intro's skip/replay behavior.
 
 For an existing Chromium installation, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` when running the tests. The test server binds to `0.0.0.0`; the application uses same-page URLs and does not call a localhost backend.
 

@@ -375,3 +375,62 @@ test('the real 3D intro localizes in place; skip and replay do not kill ongoing 
   await page.locator('#skipBtn').click();
   await expect(page.locator('#soundBtn')).toHaveAttribute('data-sound-state', 'running');
 });
+
+test('the five page views switch, deep-link and keep both dictionaries applied', async ({ page }) => {
+  await openSite(page);
+  const views = page.locator('[data-page-view]');
+  await expect(views).toHaveCount(5);
+  await expect(page.locator('[data-page-tab]')).toHaveCount(5);
+  await expect(page.locator('[data-page-view="home"]')).toBeVisible();
+  await expect(page.locator('[data-page-view="coaches"]')).toBeHidden();
+  expect(await page.evaluate(() => KWLAB.page())).toBe('home');
+  await expect(page.locator('[data-page-tab="home"]')).toHaveAttribute('aria-pressed', 'true');
+
+  await switchLanguage(page, 'de');
+  for (const [id, title] of [['coaches', 'Acht Spezialisten.'], ['facility', '1.240 m².'], ['programs', 'Ein Block.'], ['visit', 'Komm vorbei.']]) {
+    await page.locator(`[data-page-tab="${id}"]`).click();
+    await expect(page.locator(`[data-page-view="${id}"]`)).toBeVisible();
+    await expect(page.locator(`[data-page-view="${id}"] h1`)).toContainText(title);
+    await expect(page.locator(`[data-page-tab="${id}"]`)).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('[data-page-view="home"]')).toBeHidden();
+    await assertDictionaryApplied(page);
+  }
+  expect(await page.evaluate(() => KWLAB.setPage('nope'))).toBe(true);
+  await expect(page.locator('[data-page-view="home"]')).toBeVisible();
+  await expect(page.locator('.page-tab[aria-pressed="true"]')).toHaveCount(1);
+
+  await switchLanguage(page, 'en');
+  await page.locator('[data-page-tab="programs"]').click();
+  await page.locator('[data-page-view="programs"] [data-goto-home="probetraining"]').click();
+  await expect(page.locator('[data-page-view="home"]')).toBeVisible();
+  expect(await page.evaluate(() => KWLAB.page())).toBe('home');
+  await expect.poll(() => page.evaluate(() => Math.round(document.querySelector('#probetraining').getBoundingClientRect().top))).toBeLessThan(280);
+
+  const deep = await page.context().newPage();
+  await deep.emulateMedia({ reducedMotion: 'reduce' });
+  await deep.route(/https:\/\/cdn\.jsdelivr\.net\//, route => route.fulfill({ body: '', contentType: 'application/javascript' }));
+  await deep.goto('/#page-visit');
+  await deep.waitForFunction(() => window.KWLAB && document.body.classList.contains('intro-ready'));
+  await expect(deep.locator('[data-page-view="visit"]')).toBeVisible();
+  await expect(deep.locator('[data-page-view="home"]')).toBeHidden();
+  expect(await deep.evaluate(() => KWLAB.page())).toBe('visit');
+  await deep.close();
+});
+
+test('the expanded roster renders eight portraits that actually load', async ({ page }) => {
+  await openSite(page);
+  await expect(page.locator('#coachGrid .coach')).toHaveCount(4);
+  await expect(page.locator('#coachGrid .coach img')).toHaveCount(4);
+  await page.locator('[data-page-tab="coaches"]').click();
+  await expect(page.locator('#rosterGrid .trainer')).toHaveCount(8);
+  const images = await page.evaluate(async () => {
+    const nodes = [...document.querySelectorAll('#rosterGrid .trainer img, #coachGrid .coach img, .gallery img')];
+    nodes.forEach(img => { img.loading = 'eager'; });
+    await Promise.all(nodes.map(img => img.complete ? 0 : new Promise(done => { img.onload = done; img.onerror = done; })));
+    return { total: nodes.length, broken: nodes.filter(img => !img.naturalWidth).length };
+  });
+  expect(images.broken).toBe(0);
+  expect(images.total).toBeGreaterThan(10);
+  await expect(page.locator('#rosterGrid .trainer__facts')).toHaveCount(8);
+  await assertDictionaryApplied(page);
+});
