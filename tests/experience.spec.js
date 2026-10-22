@@ -49,7 +49,7 @@ async function assertDictionaryApplied(page) {
       expected.innerHTML = translate(key);
       if (el.innerHTML !== expected.innerHTML) failures.push(key);
     });
-    ['aria-label', 'placeholder', 'content', 'title'].forEach(attribute => {
+    ['aria-label', 'placeholder', 'content', 'title', 'alt'].forEach(attribute => {
       document.querySelectorAll(`[data-i18n-${attribute}]`).forEach(el => {
         const key = el.getAttribute(`data-i18n-${attribute}`);
         const values = JSON.parse(el.getAttribute('data-i18n-values') || '{}');

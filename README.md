@@ -2,7 +2,7 @@
 
 **KRAFTWERK LAB** — a single-file brand experience (Three.js + GSAP + Lenis).
 
-- Site: `index.html` (all site HTML, CSS and application JS inline; no build step or audio assets).
+- Site: `index.html` (all site HTML, CSS and application JS inline; no build step or audio assets) plus `assets/coaches/` (four editorial coach portraits for the trainer cards; the procedural SVG art remains as an automatic fallback).
 - Open it directly (`file://`) or serve it: `python3 -m http.server 8000 --bind 0.0.0.0`.
 - Runtime CDN dependencies: Three.js r128, GSAP 3.12 + ScrollTrigger, Lenis 1.1, Google Fonts (Orbitron / Exo 2 / JetBrains Mono). If animation libraries/WebGL are unavailable, the content, language controls and sound still work.
 
@@ -28,7 +28,7 @@ Language, sound and consent storage are best-effort: blocked/unavailable local s
 ## Demo boundaries
 
 - The trial-session form validates locally and **does not transmit** anything; no appointment is booked and no form contents are saved.
-- Timetable, capacities, coaches, statistics and prices are illustrative demo content.
+- Timetable, capacities, coaches, statistics and prices are illustrative demo content. Coach portraits are generated editorial images for fictional personas; no real people are depicted.
 - Cookie consent stores only the visitor's choice; no analytics/marketing scripts are loaded. Saved cookie settings can be reopened from the footer.
 - Legal panels are translated demo placeholders — operator data, privacy policy and terms require review before going live. They disclose local preferences, generated audio and external CDN/font requests.
 

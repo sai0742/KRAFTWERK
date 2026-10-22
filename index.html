@@ -35,7 +35,7 @@
   --line:rgba(244,244,239,.13);
   --line-soft:rgba(244,244,239,.07);
   --panel-2:#14171524;
-  --pad:clamp(18px,4.2vw,72px);
+  --pad:clamp(20px,4.6vw,86px);
   --maxw:1680px;
   --radius:2px;
 
@@ -146,13 +146,14 @@ input,select,textarea{font:inherit;color:inherit}
 
 /* 04 · UTILITIES ---------------------------------------------------------- */
 .shell{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.section{position:relative;z-index:2;padding:clamp(70px,11vh,150px) 0}
-.section--tight{padding-top:clamp(46px,7vh,96px)}
+section[id],main[id],footer[id]{scroll-margin-top:clamp(76px,9.5vh,104px)}
+.section{position:relative;z-index:2;padding:clamp(96px,15vh,198px) 0}
+.section--tight{padding-top:clamp(62px,9vh,124px)}
 .rule{height:1px;background:var(--line);border:0;margin:0}
 .sec-head{
   display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);
-  gap:clamp(16px,3vw,56px);align-items:start;
-  margin-bottom:clamp(34px,6vh,74px);
+  gap:clamp(20px,3.6vw,66px);align-items:start;
+  margin-bottom:clamp(48px,8vh,96px);
 }
 .sec-head__num{
   font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:.2em;color:var(--muted);
@@ -205,7 +206,7 @@ input,select,textarea{font:inherit;color:inherit}
 /* 05 · CHROME ------------------------------------------------------------- */
 .nav{
   position:fixed;inset:0 0 auto 0;z-index:var(--z-nav);
-  padding:0 calc(var(--pad) + 104px) 0 var(--pad);height:clamp(64px,8.4vh,86px);
+  padding:0 calc(var(--pad) + 104px + env(safe-area-inset-right,0px)) 0 calc(var(--pad) + env(safe-area-inset-left,0px));height:clamp(64px,8.4vh,86px);
   display:flex;align-items:center;justify-content:space-between;gap:24px;
   transition:background .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent;
@@ -245,7 +246,7 @@ input,select,textarea{font:inherit;color:inherit}
 
 /* Language controls are outside the inert intro navigation. */
 .language-switch{
-  position:fixed;top:clamp(12px,calc(4.2vh - 20px),23px);right:var(--pad);z-index:calc(var(--z-intro) + 3);
+  position:fixed;top:calc(clamp(12px,calc(4.2vh - 20px),23px) + env(safe-area-inset-top,0px));right:calc(var(--pad) + env(safe-area-inset-right,0px));z-index:calc(var(--z-intro) + 3);
   display:flex;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(17,19,18,.92);
   font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;
 }
@@ -261,13 +262,13 @@ input,select,textarea{font:inherit;color:inherit}
 }
 body.intro-active .sound-help{bottom:auto;top:clamp(108px,14vh,150px)}
 .sound-help.is-visible{opacity:1;visibility:visible}
-body.has-cookie .sound{bottom:calc(var(--cookie-height,160px) + 12px)}
+body.has-cookie .sound{bottom:calc(var(--cookie-height,160px) + 12px + env(safe-area-inset-bottom,0px))}
 body.has-cookie .sound-help{bottom:calc(var(--cookie-height,160px) + 62px)}
 .sound-help span{display:block;margin-top:6px;color:var(--muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.02em}
 
 /* sound toggle + skip ----------------------------------------------------- */
 .sound{
-  position:fixed;left:var(--pad);bottom:clamp(16px,2.4vh,28px);z-index:calc(var(--z-intro) + 2);
+  position:fixed;left:calc(var(--pad) + env(safe-area-inset-left,0px));bottom:calc(clamp(16px,2.4vh,28px) + env(safe-area-inset-bottom,0px));z-index:calc(var(--z-intro) + 2);
   display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 14px 0 12px;border-radius:999px;
   border:1px solid var(--line);background:rgba(17,19,18,.6);
   font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
@@ -283,7 +284,7 @@ body.intro-ended .sound:hover,body.intro-ended .sound:focus-visible{opacity:1}
 .sound.is-on .sound__bars i{animation:soundBar 1.15s var(--ease) infinite;animation-delay:calc(var(--i) * .12s)}
 @keyframes soundBar{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 .skip{
-  position:fixed;right:var(--pad);bottom:clamp(16px,2.4vh,28px);z-index:calc(var(--z-intro) + 2);
+  position:fixed;right:calc(var(--pad) + env(safe-area-inset-right,0px));bottom:calc(clamp(16px,2.4vh,28px) + env(safe-area-inset-bottom,0px));z-index:calc(var(--z-intro) + 2);
   display:inline-flex;align-items:center;gap:10px;
   font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
   padding:10px 0;transition:color .22s var(--ease);
@@ -398,7 +399,7 @@ body.no-webgl .hero__fallback{display:block}
 .hero__inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;min-height:0}
 .hero__body{
   flex:1;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  gap:clamp(16px,3vw,48px);align-items:center;
+  gap:clamp(24px,4vw,64px);align-items:center;
   padding-top:clamp(72px,11vh,110px);padding-bottom:clamp(20px,4vh,44px);
   min-height:0;
 }
@@ -534,7 +535,7 @@ body.intro-active .hero__copy{transition:none}
 /* 10 · MANIFESTO ---------------------------------------------------------- */
 .manifesto{
   position:relative;z-index:2;
-  padding:clamp(90px,18vh,220px) 0;min-height:90vh;display:flex;align-items:center;
+  padding:clamp(116px,23vh,264px) 0;min-height:92vh;display:flex;align-items:center;
   border-top:1px solid var(--line-soft);
 }
 .manifesto__text{
@@ -548,7 +549,7 @@ body.intro-active .hero__copy{transition:none}
   display:flex;flex-direction:column;gap:18px;align-items:flex-start;
   max-width:240px;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:2;
 }
-.manifesto__grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:clamp(30px,6vw,90px);align-items:end}
+.manifesto__grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:clamp(38px,7vw,112px);align-items:end}
 .manifesto__bar{width:100%;height:1px;background:var(--line);position:relative;margin-top:26px}
 .manifesto__bar i{position:absolute;inset:0;background:var(--volt);transform-origin:left;transform:scaleX(0)}
 
@@ -560,7 +561,7 @@ body.intro-active .hero__copy{transition:none}
 .zones{position:relative;z-index:2;border-top:1px solid var(--line-soft)}
 .zones__pin{overflow:hidden;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:clamp(70px,9vh,110px)}
 .zones__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:0 var(--pad)}
-.zones__track{display:flex;gap:clamp(14px,1.6vw,24px);padding:clamp(26px,4vh,46px) var(--pad) 0;will-change:transform;width:max-content}
+.zones__track{display:flex;gap:clamp(18px,2vw,32px);padding:clamp(34px,5vh,58px) var(--pad) 0;will-change:transform;width:max-content}
 .zone{
   position:relative;flex:none;
   width:min(74vw,760px);height:clamp(300px,50vh,500px);
@@ -596,7 +597,7 @@ body.intro-active .hero__copy{transition:none}
 
 /* 12 · TIMETABLE ---------------------------------------------------------- */
 .schedule{position:relative;z-index:2;border-top:1px solid var(--line-soft)}
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(22px,3vh,34px);align-items:center}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(28px,3.8vh,44px);align-items:center}
 .filters__count{margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6C736C}
 .rows{border-top:1px solid var(--line)}
 .row{
@@ -631,7 +632,7 @@ body.intro-active .hero__copy{transition:none}
 .cap__bar i{position:absolute;inset:0;background:var(--volt);transform-origin:left;transition:transform .6s var(--ease)}
 .cap--high .cap__bar i{background:var(--volt-hi);box-shadow:0 0 8px rgba(228,255,122,.45)}
 .row.is-hidden{display:none}
-.schedule__foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:26px;align-items:center}
+.schedule__foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(32px,4vh,48px);align-items:center}
 .empty{
   display:none;padding:48px 0;text-align:center;border-bottom:1px solid var(--line-soft);
   font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
@@ -642,17 +643,39 @@ body.intro-active .hero__copy{transition:none}
 .coaches__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .coach{
   background:var(--ink);position:relative;display:flex;flex-direction:column;
-  min-height:clamp(380px,44vw,520px);overflow:hidden;
+  min-height:clamp(380px,44vw,540px);overflow:hidden;
+  transition:background .45s var(--ease);
 }
-.coach__art{position:relative;flex:1;min-height:0;overflow:hidden;background:#0D0F0E}
-.coach__art svg{width:100%;height:100%;object-fit:cover;display:block}
+.coach:hover,.coach:focus-within{background:#151815}
+.coach__art{
+  position:relative;isolation:isolate;flex:1;min-height:0;overflow:hidden;background:#0D0F0E;
+}
+.coach__art > svg{
+  position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.coach__photo{
+  position:absolute;inset:0;z-index:1;
+  width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+  filter:grayscale(.62) contrast(1.06) brightness(.88);
+  transform:scale(1.002);
+  transition:transform 1.15s var(--ease),filter .7s var(--ease);
+  will-change:transform;
+}
+.coach:hover .coach__photo,.coach:focus-within .coach__photo{
+  transform:scale(1.05);filter:grayscale(.14) contrast(1.04) brightness(.97);
+}
+.coach__art::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(215deg,rgba(200,255,61,.16),rgba(62,74,18,.10) 36%,rgba(17,19,18,0) 64%);
+}
 .coach__art::after{
-  content:"";position:absolute;inset:0;
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
   background:linear-gradient(to top,var(--ink) 2%,rgba(17,19,18,.55) 26%,rgba(17,19,18,0) 62%);
 }
 .coach__body{
-  position:relative;z-index:2;padding:0 clamp(16px,1.8vw,24px) clamp(18px,2vw,26px);
-  margin-top:-40px;display:flex;flex-direction:column;gap:8px;
+  position:relative;z-index:4;padding:0 clamp(18px,2vw,28px) clamp(22px,2.4vw,30px);
+  margin-top:-40px;display:flex;flex-direction:column;gap:9px;
   min-height:224px;
 }
 .coach__idx{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--volt)}
@@ -673,7 +696,7 @@ body.intro-active .hero__copy{transition:none}
 /* 14 · NUMBERS ------------------------------------------------------------ */
 .numbers{position:relative;z-index:2;border-top:1px solid var(--line-soft)}
 .numbers__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{background:var(--ink);padding:clamp(22px,3vw,38px) clamp(14px,1.8vw,26px);display:flex;flex-direction:column;gap:10px;min-height:clamp(190px,20vw,260px);justify-content:space-between}
+.stat{background:var(--ink);padding:clamp(26px,3.4vw,44px) clamp(16px,2vw,30px);display:flex;flex-direction:column;gap:10px;min-height:clamp(190px,20vw,260px);justify-content:space-between}
 .stat__val{font-family:var(--font-display);font-weight:900;font-size:clamp(34px,5vw,64px);line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:2px}
 .stat__val .stat__suffix{font-size:.42em;color:var(--volt);letter-spacing:0}
 .stat__label{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);line-height:1.6}
@@ -689,11 +712,11 @@ body.intro-active .hero__copy{transition:none}
 }
 .billing__opt[aria-pressed="true"]{background:var(--volt);color:#12150D}
 .billing__save{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:var(--volt);padding:0 12px 0 6px;text-transform:uppercase}
-.plans__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);align-items:stretch}
+.plans__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.2vw,34px);align-items:stretch}
 .plan{
-  position:relative;display:flex;flex-direction:column;gap:20px;
+  position:relative;display:flex;flex-direction:column;gap:24px;
   border:1px solid var(--line);background:linear-gradient(180deg,#151816,#101211);
-  padding:clamp(22px,2.4vw,32px);
+  padding:clamp(26px,2.8vw,38px);
 }
 .plan--focus{
   border-color:var(--volt);
@@ -718,16 +741,16 @@ body.intro-active .hero__copy{transition:none}
 .plan--focus .plan__list li::before{background:var(--volt)}
 .plan__cta{margin-top:auto;padding-top:18px}
 .plan__cta .btn{width:100%}
-.plans__note{margin-top:clamp(22px,3vh,34px)}
+.plans__note{margin-top:clamp(30px,4vh,46px)}
 
 /* 16 · FORM --------------------------------------------------------------- */
 .form-section{position:relative;z-index:2;border-top:1px solid var(--line-soft)}
-.form-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(34px,6vw,90px);align-items:start}
+.form-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(42px,7vw,116px);align-items:start}
 .form-copy{display:flex;flex-direction:column;gap:22px;position:sticky;top:calc(clamp(64px,8.4vh,86px) + 28px)}
 .form-copy__meta{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .form-copy__meta div{display:flex;gap:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .form-copy__meta b{color:var(--text);font-weight:400;min-width:90px}
-form.probe{display:flex;flex-direction:column;gap:clamp(18px,2.6vh,26px)}
+form.probe{display:flex;flex-direction:column;gap:clamp(22px,3vh,32px)}
 .field{position:relative;display:flex;flex-direction:column;gap:6px}
 .field > label{
   font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
@@ -798,7 +821,7 @@ form.probe{display:flex;flex-direction:column;gap:clamp(18px,2.6vh,26px)}
 
 /* 17 · FOOTER ------------------------------------------------------------- */
 .footer{position:relative;z-index:2;border-top:1px solid var(--line);padding-top:clamp(40px,6vh,70px);overflow:hidden}
-.footer__top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,.7fr));gap:clamp(24px,4vw,54px);padding-bottom:clamp(30px,5vh,60px)}
+.footer__top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,.7fr));gap:clamp(32px,4.8vw,68px);padding-bottom:clamp(42px,6.5vh,78px)}
 .footer__brand{display:flex;flex-direction:column;gap:14px;max-width:34ch}
 .footer__brand .kit__lockup{align-items:center}
 .footer__brand .nav__mark{width:34px}
@@ -859,7 +882,7 @@ form.probe{display:flex;flex-direction:column;gap:clamp(18px,2.6vh,26px)}
   position:fixed;left:0;right:0;bottom:0;z-index:var(--z-cookie);
   background:rgba(19,22,20,.97);border-top:1px solid rgba(244,244,239,.16);
   box-shadow:0 -18px 50px rgba(0,0,0,.45);
-  padding:18px var(--pad) 20px;
+  padding:18px var(--pad) calc(20px + env(safe-area-inset-bottom,0px));
   display:flex;flex-direction:column;gap:12px;
   transform:translateY(0);opacity:1;transition:opacity .4s var(--ease),transform .4s var(--ease);
 }
@@ -985,6 +1008,10 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .zones__progress{display:none}
   .marquee__track{animation-duration:32s}
 }
+/* tablets: the app-icon tile fills its row so the identity kit leaves no half-empty cell */
+@media (min-width:421px) and (max-width:980px){
+  .kit > .kit__tile:nth-child(7){grid-column:span 4}
+}
 @media (max-width:720px){
   .nav{height:64px;gap:10px}
   .nav__right > a{display:none}
@@ -1026,10 +1053,11 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
   .cookie__actions{flex-direction:column;align-items:stretch}
   .cookie__actions .btn{width:100%}
   .cookie__settings .cookie__actions{flex-direction:column}
-  .sound{left:var(--pad);right:auto;bottom:12px;padding:0 11px;height:38px;font-size:9px}
+  .sound{left:calc(var(--pad) + env(safe-area-inset-left,0px));right:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:0 11px;height:38px;font-size:9px}
   .sound-help{bottom:62px}
   .skip{font-size:9px;letter-spacing:.08em;gap:6px}
   .skip__line{width:18px}
+  .language-switch button{min-width:46px;min-height:40px}
   .hero__visual{padding-bottom:clamp(40px,6svh,64px)}
   .coaches__grid{grid-template-columns:minmax(0,1fr)}
   .coach{min-height:420px}
@@ -1514,7 +1542,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
       </div>
     </div>
     <div class="coaches__grid" id="coachGrid"></div>
-    <p class="note" style="margin-top:18px" data-i18n="coaches.note">Illustrative, fiktive Trainerprofile und prozedurale Zweifarbporträts. Keine realen Personen.</p>
+    <p class="note" style="margin-top:18px" data-i18n="coaches.note">Illustrative, fiktive Trainerprofile mit für diese Demo erstellten editoriellen Studioporträts. Keine realen Personen.</p>
   </div>
 </section>
 
@@ -1918,22 +1946,22 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
 
     coaches: [
       {
-        name: 'Lena Vogt', spec: 'coach.0.spec', desc: 'coach.0.desc',
+        name: 'Lena Vogt', photo: 'lena-vogt.jpg', spec: 'coach.0.spec', desc: 'coach.0.desc',
         more: ['coach.0.more.0', 'coach.0.more.1', 'coach.0.more.2', 'coach.0.more.3'],
         art: { head: 44, tilt: -4, shoulder: 116, accent: 0.55 }
       },
       {
-        name: 'Matteo Krüger', spec: 'coach.1.spec', desc: 'coach.1.desc',
+        name: 'Matteo Krüger', photo: 'matteo-krueger.jpg', spec: 'coach.1.spec', desc: 'coach.1.desc',
         more: ['coach.1.more.0', 'coach.1.more.1', 'coach.1.more.2', 'coach.1.more.3'],
         art: { head: 47, tilt: 3, shoulder: 120, accent: 0.42 }
       },
       {
-        name: 'Aylin Demir', spec: 'coach.2.spec', desc: 'coach.2.desc',
+        name: 'Aylin Demir', photo: 'aylin-demir.jpg', spec: 'coach.2.spec', desc: 'coach.2.desc',
         more: ['coach.2.more.0', 'coach.2.more.1', 'coach.2.more.2', 'coach.2.more.3'],
         art: { head: 42, tilt: -7, shoulder: 108, accent: 0.6 }
       },
       {
-        name: 'Rosa Lindqvist', spec: 'coach.3.spec', desc: 'coach.3.desc',
+        name: 'Rosa Lindqvist', photo: 'rosa-lindqvist.jpg', spec: 'coach.3.spec', desc: 'coach.3.desc',
         more: ['coach.3.more.0', 'coach.3.more.1', 'coach.3.more.2', 'coach.3.more.3'],
         art: { head: 45, tilt: 6, shoulder: 112, accent: 0.48 }
       }
@@ -2139,7 +2167,8 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "coaches.index": "05 / Coaches",
     "coaches.title": "Coaches with a system.",
     "coaches.lede": "No motivational theatre. Four specialists in technique, load management and recovery — each with a clear purpose.",
-    "coaches.note": "Illustrative, fictional coach profiles and procedural duotone portraits. Not real people.",
+    "coaches.note": "Illustrative, fictional coach profiles with editorial studio portraits produced for this demo. Not real people.",
+    "coaches.portraitAlt": "Editorial studio portrait of {name} at Kraftwerk Lab",
     "stats.index": "06 / Numbers",
     "stats.title": "Engineered<br />in numbers.",
     "stats.lede": "Concept figures for this demo project. They describe the imagined studio, not verified business data.",
@@ -2325,7 +2354,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "tier.elite.feature.3": "Movement analysis",
     "tier.elite.feature.4": "Priority booking",
     "legal.imprint.sub": "Demo project · legal details not verified",
-    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo notice:</b> KRAFTWERK LAB is a fictional brand and a design and coding demo. There is no real studio, operator or address. The following information is placeholder copy, <b>not</b> legally valid provider information.</div><h3>Provider identification (§ 5 DDG)</h3><p>The operator’s name and address must be added before publication. This demo deliberately does not invent company details, registration numbers or VAT IDs.</p><h3>Required before going live</h3><ul><li>Full company name and serviceable address</li><li>Authorized representative</li><li>Register court and registration number, if applicable</li><li>VAT identification number</li><li>Contact email and phone number</li><li>Person responsible for content</li></ul><h3>Image credits</h3><p>All graphics, the K mark and coach portraits are generated procedurally in the browser. No stock photographs are used.</p>",
+    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo notice:</b> KRAFTWERK LAB is a fictional brand and a design and coding demo. There is no real studio, operator or address. The following information is placeholder copy, <b>not</b> legally valid provider information.</div><h3>Provider identification (§ 5 DDG)</h3><p>The operator’s name and address must be added before publication. This demo deliberately does not invent company details, registration numbers or VAT IDs.</p><h3>Required before going live</h3><ul><li>Full company name and serviceable address</li><li>Authorized representative</li><li>Register court and registration number, if applicable</li><li>VAT identification number</li><li>Contact email and phone number</li><li>Person responsible for content</li></ul><h3>Image credits</h3><p>The coach portraits are editorial images created for this fictional demo brand. The K mark, zone visuals and all remaining graphics are generated procedurally in the browser. No stock photographs are used.</p>",
     "legal.privacy.sub": "Transparency about this demo’s actual data processing",
     "legal.privacy.body": "<div class=\"modal__demo\"><b>In short:</b> This demo does not send form data to a server, set tracking cookies or load analytics or marketing scripts. Optional services would only be enabled with explicit consent; none are implemented in this demo.</div><h3>Essential storage</h3><p>Your consent choice is stored in <code>localStorage</code> under <code>kw.consent.v1</code>, with the selected categories and a timestamp. Your language (<code>kw.language.v1</code>) and sound preference (<code>kw.sound.v1</code>) are also stored locally so they are remembered on your next visit. These preferences are not used for tracking. Browser storage may be unavailable in private or restricted browsing; the site still works without it.</p><h3>Trial session form</h3><p>Your entries stay in the browser and are not sent or saved. A real endpoint is prepared as an integration boundary in the code. Before production, it needs appropriate privacy notices, retention periods and a legal basis.</p><h3>Sound</h3><p>Audio is synthesized locally using the Web Audio API. No microphone, audio recording, remote audio service or audio download is used. Sound is enabled by default, subject to browser autoplay rules; you can mute it at any time. The spatial stereo effect is not certified Dolby Atmos.</p><h3>External resources</h3><p>This page loads fonts from Google Fonts and the Three.js, GSAP and Lenis libraries from a CDN. Your IP address is necessarily transmitted to those providers. Self-host these resources for a live deployment.</p><h3>Your rights</h3><p>You can change or withdraw consent using “Cookie settings” in the footer. Data subject rights (access, correction, deletion and objection) require a real controller, which has not yet been identified here.</p><div class=\"modal__demo\">This is not a legally reviewed privacy document. Legal review is required before publication.</div>",
     "legal.terms.sub": "Illustrative demo conditions, not a contract",
@@ -2440,7 +2469,8 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "coaches.index": "05 / Trainer",
     "coaches.title": "Trainer mit System.",
     "coaches.lede": "Kein Motivationstheater. Vier Spezialisten für Technik, Laststeuerung und Regeneration — mit klaren Zuständigkeiten.",
-    "coaches.note": "Illustrative, fiktive Trainerprofile und prozedurale Zweifarbporträts. Keine realen Personen.",
+    "coaches.note": "Illustrative, fiktive Trainerprofile mit für diese Demo erstellten editoriellen Studioporträts. Keine realen Personen.",
+    "coaches.portraitAlt": "Editoriales Studioporträt von {name} im Kraftwerk Lab",
     "stats.index": "06 / Zahlen",
     "stats.title": "Konstruktion<br />in Zahlen.",
     "stats.lede": "Konzept-Kennzahlen für dieses Demo-Projekt. Sie beschreiben das gedachte Studio, nicht verifizierte Geschäftsdaten.",
@@ -2626,7 +2656,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     "tier.elite.feature.3": "Bewegungsanalyse",
     "tier.elite.feature.4": "Bevorzugte Buchung",
     "legal.imprint.sub": "Demoprojekt · keine geprüften Rechtsangaben",
-    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo-Hinweis:</b> KRAFTWERK LAB ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Es existiert kein reales Studio, kein Betreiber und keine Anschrift. Die folgenden Angaben sind Platzhalter und <b>keine</b> rechtsgültigen Anbieterinformationen.</div><h3>Anbieterkennzeichnung (§ 5 DDG)</h3><p>Name und Anschrift des Betreibers sind vor einer Veröffentlichung zu ergänzen. In dieser Demo werden bewusst keine erfundenen Firmendaten, Registernummern oder Umsatzsteuer-IDs angegeben.</p><h3>Vor dem Live-Betrieb erforderlich</h3><ul><li>Vollständiger Firmenname und ladungsfähige Anschrift</li><li>Vertretungsberechtigte Person</li><li>Registergericht und Registernummer, falls vorhanden</li><li>Umsatzsteuer-Identifikationsnummer</li><li>Kontakt: E-Mail und Telefon</li><li>Verantwortliche Person für den Inhalt</li></ul><h3>Bildnachweis</h3><p>Alle Grafiken, das K-Signet und die Trainerporträts sind prozedural im Browser erzeugt. Es werden keine Stockfotos verwendet.</p>",
+    "legal.imprint.body": "<div class=\"modal__demo\"><b>Demo-Hinweis:</b> KRAFTWERK LAB ist eine fiktive Marke und eine Gestaltungs- und Programmierdemo. Es existiert kein reales Studio, kein Betreiber und keine Anschrift. Die folgenden Angaben sind Platzhalter und <b>keine</b> rechtsgültigen Anbieterinformationen.</div><h3>Anbieterkennzeichnung (§ 5 DDG)</h3><p>Name und Anschrift des Betreibers sind vor einer Veröffentlichung zu ergänzen. In dieser Demo werden bewusst keine erfundenen Firmendaten, Registernummern oder Umsatzsteuer-IDs angegeben.</p><h3>Vor dem Live-Betrieb erforderlich</h3><ul><li>Vollständiger Firmenname und ladungsfähige Anschrift</li><li>Vertretungsberechtigte Person</li><li>Registergericht und Registernummer, falls vorhanden</li><li>Umsatzsteuer-Identifikationsnummer</li><li>Kontakt: E-Mail und Telefon</li><li>Verantwortliche Person für den Inhalt</li></ul><h3>Bildnachweis</h3><p>Die Trainerporträts sind für diese fiktive Demo-Marke erstellte redaktionelle Bilder. K-Signet, Zonenansichten und alle übrigen Grafiken werden prozedural im Browser erzeugt. Es werden keine Stockfotos verwendet.</p>",
     "legal.privacy.sub": "Transparenz über die tatsächliche Datenverarbeitung dieser Demo",
     "legal.privacy.body": "<div class=\"modal__demo\"><b>Kurzfassung:</b> Diese Demo überträgt keine Formulardaten an einen Server, setzt keine Tracking-Cookies und lädt keine Analyse- oder Marketing-Skripte. Optionale Dienste würden nur nach ausdrücklicher Einwilligung aktiviert; in dieser Demo ist kein solcher Dienst implementiert.</div><h3>Technisch notwendige Speicherung</h3><p>Deine Einwilligung wird im <code>localStorage</code> unter <code>kw.consent.v1</code> gespeichert, einschließlich der gewählten Kategorien und eines Zeitstempels. Deine Sprache (<code>kw.language.v1</code>) und Toneinstellung (<code>kw.sound.v1</code>) werden ebenfalls lokal gespeichert und beim nächsten Besuch wiederhergestellt. Diese Einstellungen dienen nicht der Nachverfolgung. In privaten oder eingeschränkten Browsern kann die Speicherung fehlen; die Seite funktioniert trotzdem.</p><h3>Probetraining-Formular</h3><p>Die Eingaben bleiben im Browser und werden nicht versendet oder gespeichert. Eine echte Serverschnittstelle ist im Code als Integrationsgrenze vorbereitet. Vor dem Produktivbetrieb sind Datenschutzhinweise, Löschfristen und eine Rechtsgrundlage erforderlich.</p><h3>Ton</h3><p>Audio wird lokal mit der Web-Audio-Programmierschnittstelle erzeugt. Es werden weder Mikrofon noch Tonaufzeichnung, externer Audiodienst oder Audiodownload verwendet. Ton ist vorbehaltlich der automatischen Wiedergaberegeln des Browsers standardmäßig aktiviert und jederzeit stummschaltbar. Der Stereo-Raumklang ist kein zertifiziertes Dolby Atmos.</p><h3>Externe Ressourcen</h3><p>Diese Seite lädt Schriftarten von Google Fonts sowie Three.js, GSAP und Lenis über ein CDN. Dabei wird technisch bedingt deine IP-Adresse an den jeweiligen Anbieter übertragen. Für den Live-Betrieb sollten diese Ressourcen selbst gehostet werden.</p><h3>Deine Rechte</h3><p>Du kannst die Einwilligung jederzeit über „Cookie-Einstellungen“ im Fußbereich ändern oder widerrufen. Betroffenenrechte (Auskunft, Berichtigung, Löschung, Widerspruch) setzen einen realen Verantwortlichen voraus, der hier noch nicht benannt ist.</p><div class=\"modal__demo\">Diese Seite ist kein rechtsgeprüftes Datenschutzdokument. Vor Veröffentlichung ist eine anwaltliche Prüfung erforderlich.</div>",
     "legal.terms.sub": "Beispielhafte Demo-Konditionen ohne Vertragswirkung",
@@ -2672,7 +2702,7 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
     $$('[data-i18n]').forEach(function (el) { el.textContent = translate(el.getAttribute('data-i18n')); });
     // Only authored dictionary entries can contain HTML. No form/user input enters here.
     $$('[data-i18n-html]').forEach(function (el) { el.innerHTML = translate(el.getAttribute('data-i18n-html')); });
-    ['aria-label', 'placeholder', 'content', 'title'].forEach(function (attribute) {
+    ['aria-label', 'placeholder', 'content', 'title', 'alt'].forEach(function (attribute) {
       $$('[data-i18n-' + attribute + ']').forEach(function (el) {
         var values = {};
         try { values = JSON.parse(el.getAttribute('data-i18n-values') || '{}'); } catch (err) { /* optional authored values */ }
@@ -2879,7 +2909,12 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
           '<path d="M20 340h44" stroke="#C8FF3D" stroke-width="1"/>' +
         '</svg>';
       return '<article class="coach" tabindex="0" aria-labelledby="' + id + '-name ' + id + '-spec">' +
-        '<div class="coach__art">' + svg + '</div>' +
+        '<div class="coach__art">' + svg +
+          '<img class="coach__photo" src="assets/coaches/' + c.photo + '" data-coach-photo' +
+          ' alt="' + escapeHTML(translate('coaches.portraitAlt', { name: c.name })) + '"' +
+          ' data-i18n-alt="coaches.portraitAlt" data-i18n-values=\'' + JSON.stringify({ name: c.name }) + '\'' +
+          ' width="768" height="1376" loading="lazy" decoding="async" />' +
+        '</div>' +
         '<div class="coach__body">' +
           '<p class="coach__idx">0' + (i + 1) + '</p>' +
           '<h3 class="coach__name" id="' + id + '-name">' + c.name + '</h3>' +
@@ -2889,6 +2924,14 @@ html.has-cursor input,html.has-cursor textarea,html.has-cursor select,html.has-c
         '</div>' +
       '</article>';
     }).join('');
+    /* If a portrait file is missing, the procedural art beneath it stays visible. */
+    $$('[data-coach-photo]', host).forEach(function (img) {
+      function fallback() {
+        if (img.parentNode) img.remove();
+      }
+      img.addEventListener('error', fallback);
+      if (img.complete && img.naturalWidth === 0) fallback();
+    });
   }
 
   function renderStats() {
